@@ -1,13 +1,16 @@
-const apiKey = 'aa05d9ef1feff0e96ac321d8773a5c67';
-const popularMoviesUrl = `https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}`;
+const API_KEY = 'aa05d9ef1feff0e96ac321d8773a5c67';
 
-export async function getPopularMovies() {
+const BASE_URL = 'https://api.themoviedb.org/3/';
+
+async function getPopularMovies() {
   try {
-    const response = await fetch(popularMoviesUrl);
-    const data = await response.json();   
-    const popularMovies = data.result;  
-    return popularMovies;    
+    const response = await fetch(
+      `${BASE_URL}trending/movie/day?api_key=${API_KEY}&page=${this.page}`
+    );
+    const data = await response.json();
+    const popularMovies = data;
+    return popularMovies;
   } catch (error) {
-    console.log(error);      
+    console.log(error);
   }
 }
