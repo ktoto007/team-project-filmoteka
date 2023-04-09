@@ -1,0 +1,57 @@
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style-type: none;
+  padding: 0;
+  gap: 20px;
+
+  @media screen and (min-width: 768px) {
+    gap: 32px;
+  }
+  @media screen and (min-width: 1200px) {
+    gap: 16px;
+  }
+}
+
+.main-card {
+  width: 280px;
+  height: 398px;
+
+  @media screen and (min-width: 768px) {
+    gap: 32px;
+    width: 336px;
+    height: 455px;
+  }
+  @media screen and (min-width: 1200px) {
+    gap: 16px;
+    width: 395px;
+    height: 574px;
+  }
+}
+
+.main-container {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: calc(16 / 12);
+  color: #000000;
+}
+
+.main-title {
+}
+
+.main-text {
+}
