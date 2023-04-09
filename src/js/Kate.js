@@ -2,6 +2,11 @@ function renderMarkupFilmsCard(films) {
   
   const markupFilmsCard = films.map(({title, poster_path, release_date, genre_ids
     }) => {
+      
+      if(genre_ids.length > 2) {
+        genre_ids.splice(2, genre_ids.length - 2, 'Other')
+      }
+
       const yearRelease = release_date.slice(0, 4);
 
         return `
@@ -11,7 +16,7 @@ function renderMarkupFilmsCard(films) {
                 <div class="films-list-item__info">
                   <h2 class="films-list-item__tittle">${title}</h2>
                   <p class="films-list-item__ganres">
-                    <span class="films-list-item__year"> | ${yearRelease}</span>
+                    <span class="films-list-item__year">${genre_ids} | ${yearRelease}</span>
                   </p>
                 </div>
               </a>`
