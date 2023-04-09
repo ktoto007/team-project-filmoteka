@@ -1,34 +1,11 @@
-body {
-  font-family:'Roboto', sans-serif;
-}
-html {
-  box-sizing: border-box;
-}
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-ul,
-p
-{
-  margin: 0;
-}
-
-
 .header__container {
 
-    padding-top: 20px;
-    @media screen and (min-width: 768px) {
-      padding-top: 32px;
-    }
+  padding-top: 20px;
+  @media screen and (min-width: 768px) {
+    padding-top: 32px;
+    
   }
+}
   
   .header__background {
     padding: 14px 14px 20px 14px;
@@ -49,6 +26,26 @@ p
         rgba(0, 0, 0, 0.4)
       ),
       url(../img/background-mob.jpg);
+      @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.4),
+        rgba(0, 0, 0, 0.4)
+      ),
+      url(../img/background-mob\ @2x.jpg);
+  }
+  @media (min-device-pixel-ratio: 3),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.4),
+        rgba(0, 0, 0, 0.4)
+      ),
+      url(../img/background-mob@3x.jpg);
+  }
   
     
   
@@ -77,7 +74,26 @@ p
           rgba(0, 0, 0, 0.49)
         ),
         url(../img/images-background.jpg);
-  
+        @media (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+        background-image: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.49),
+            rgba(0, 0, 0, 0.49)
+          ),
+          url(../img/background-desk@2x.jpg);
+      }
+      @media (min-device-pixel-ratio: 3),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+        background-image: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.49),
+            rgba(0, 0, 0, 0.49)
+          ),
+          url(../img/background-desk@3x.jpg);
+      }
       
     }
   }
@@ -85,7 +101,7 @@ p
   .header__wrapper {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 4px;
     @media screen and (min-width: 768px) {
       display: flex;
       flex-direction: row-reverse;
@@ -93,7 +109,7 @@ p
       justify-content: flex-end;
       @media screen and (min-width: 1280px) {
         padding-top: 0;
-        gap: 4px;
+        gap: 8px;
       }
     }
   }
@@ -108,15 +124,11 @@ p
       margin-bottom: 0px;
       margin-top: 0;
       padding-top: 0;
+      padding-left: 0;
     }
   }
   
-  .header__btn-home.current,
-.header__btn-library.current {
-  color: #ffffff;
-  background: #000000;
-}
-  .header__btn-home {
+    .header__btn-home {
     
     align-items: center;
     padding: 10px 26px;
@@ -129,8 +141,7 @@ p
     line-height: calc(12 / 14);
     text-transform: uppercase;
     cursor: pointer;
-    color: #000000;
-    background: #ffffff;
+    
     
     @media screen and (min-width: 768px) {
       width: 83px;
@@ -178,7 +189,7 @@ p
     display: flex;
     max-width: 252px;
     @media screen and (min-width: 1280px) {
-      // max-width: 147px;
+      
       height: 42px;
     }
   }
@@ -271,30 +282,7 @@ p
       padding: 14px 32px;
     }
   }
-  .header__btn-queue {
-    padding: 10px 24px;
-    width: 86px;
-    height: 34px;
-    border-radius: 100px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: calc(12 / 14);
-    text-transform: uppercase;
-    cursor: pointer;
-    color: #ffffff;
-    background: #b92f2c;
-  
-    @media screen and (min-width: 768px) {
-      padding: 12px 24px;
-      height: 38px;
-    }
-    @media screen and (min-width: 1280px) {
-      height: 42px;
-      padding: 14px 24px;
-    }
-  }
-  
+    
   .header__logo-link {
     display: flex;
     align-items: center;
@@ -306,7 +294,6 @@ p
     height: 32px;
     margin-right: 8px;
     stroke-width: 0;
-    stroke: currentColor;
     stroke: #ffffff;
     fill: transparent;
     @media screen and (min-width: 768px) {
@@ -337,20 +324,7 @@ p
     }
   }
   
-  .header__btn {
-    margin-top: 16px;
-    @media screen and (min-width: 768px) {
-      display: flex;
-      margin-top: 0;
-      display: none;
-    }
-  }
-  .header__btn-top {
-    @media screen and (max-width: 768px) {
-      display: none;
-    }
-    margin-left: auto;
-  }
+    
   .header__btn-bottom {
     display: flex;
     flex-direction: column-reverse;
