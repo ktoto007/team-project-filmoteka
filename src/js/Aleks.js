@@ -21,19 +21,52 @@ async function fetchMovieDetails(movieId) {
   
     const title = document.createElement('h2');
     title.textContent = movieData.title;
+
+
+    const image = document.createElement('img');
+  image.src = `https://image.tmdb.org/t/p/w500/${movieData.poster_path}`;
+  image.classList.add('modal_img')
   
-    const releaseDate = document.createElement('p');
-    releaseDate.textContent = `Дата выпуска: ${movieData.release_date}`;
+    const voteAverage = document.createElement('p');
+    voteAverage.textContent = `Vote / Votes: ${movieData.vote_average}/ ${movieData.vote_count}`;
+
+    const popularity = document.createElement('p');
+    popularity.textContent = `Popularity: ${movieData.popularity}`;
+
+    const titleOriginal = document.createElement('p');
+    titleOriginal.textContent = `Original Title: ${movieData.title}`;
+
+    const genre = document.createElement('p');
+    genre.textContent = `Genre: ${movieData.genres.map(g => g.name).join(', ')}`;
   
     const overview = document.createElement('p');
     overview.textContent = movieData.overview;
+
+    const addToWatched = document.createElement('button');
+    addToWatched.classList.add('button-watched');
+    addToWatched.textContent = `Add To Watched`
+
+    const addToQueue = document.createElement('button');
+    addToQueue.classList.add('button-queue');
+    addToQueue.textContent = `Add To Queue`
+
+
   
     modalContent.appendChild(closeBtn);
+    modalContent.appendChild(image);
     modalContent.appendChild(title);
-    modalContent.appendChild(releaseDate);
+
+    modalContent.appendChild(voteAverage);
+    modalContent.appendChild(popularity);
+    modalContent.appendChild(titleOriginal);
+    modalContent.appendChild(genre);
     modalContent.appendChild(overview);
   
     modal.appendChild(modalContent);
+
+    modalContent.appendChild(addToWatched)
+    modalContent.appendChild(addToQueue)
+
   
     document.body.appendChild(modal);
   
