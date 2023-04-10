@@ -67,4 +67,3 @@ function renderMarkupFilmsCard(films) {
 }
 
 
-
