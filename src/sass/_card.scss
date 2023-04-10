@@ -17,7 +17,7 @@ a {
   
   .films-list-item__poster {
     width: 280px;
-    height: 402px;
+    height: 400px;
   
     margin-bottom: 10px;
   
@@ -36,15 +36,12 @@ a {
     }
   
   };
-  
-  .films-list-item__tittle {
+
+  .films-item__info {
     font-size: 12px;
     line-height: calc(14/12);
     font-weight: 500;
-  
-    color: #000000;
-    text-transform: uppercase;
-  
+
     @media screen and (min-width: 768px) {
       line-height: calc(16/12);
     }
@@ -53,22 +50,14 @@ a {
       font-size: 20px;
       line-height: calc(24/20);
     }
+
+  }
   
+  .films-list-item__tittle {
+    color: #000000;
+    text-transform: uppercase;
   };
   
   .films-list-item__ganres {
-    font-size: 12px;
-    line-height: calc(14/12);
-    font-weight: 500;
-  
     color: #B92F2C;
-  
-    @media screen and (min-width: 768px) {
-      line-height: calc(16/12);
-    }
-  
-    @media screen and (min-width: 1280px) {
-      font-size: 20px;
-      line-height: calc(24/20);
-    }
   };
