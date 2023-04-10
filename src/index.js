@@ -65,3 +65,20 @@ function renderMarkupFilmsCard(films) {
 
   return (refs.cardContainer.innerHTML = markupFilmsCard);
 }
+
+
+  
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
