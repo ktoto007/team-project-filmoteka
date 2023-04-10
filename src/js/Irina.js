@@ -14,3 +14,23 @@ async function getPopularMovies() {
     console.log(error);
   }
 }
+ 
+//!!!!!!!!!!!!!!!!!!!// FETCH ON YOU TUBE//!!!!!!!!!!!!!!!!!//
+
+
+async function getMovieTrailer(id) {
+  const url = `${BASE_URL}movie/${id}/videos?api_key=${API_KEY}`;
+
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Error`);
+    }
+    const data = await response.json();
+    return data;
+   
+  } catch (error) {
+    console.error('Error:', error);
+  }
+} 
+  
