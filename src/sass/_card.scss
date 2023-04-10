@@ -1,0 +1,74 @@
+a {
+    text-decoration: none;
+  }
+  
+  .films-list__item {
+    width: 280px;
+  
+    @media screen and (min-width: 768px) {
+      width: 336px;
+    }
+  
+    @media screen and (min-width: 1280px) {
+      width: 395px;
+    }
+    
+  };
+  
+  .films-list-item__poster {
+    width: 280px;
+    height: 402px;
+  
+    margin-bottom: 10px;
+  
+    @media screen and (min-width: 768px) {
+      width: 336px;
+      height: 455px;
+  
+      margin-bottom: 8px;
+    }
+  
+    @media screen and (min-width: 1280px) {
+      width: 395px;
+      height: 574px;
+  
+      margin-bottom: 12px;
+    }
+  
+  };
+  
+  .films-list-item__tittle {
+    font-size: 12px;
+    line-height: calc(14/12);
+    font-weight: 500;
+  
+    color: #000000;
+    text-transform: uppercase;
+  
+    @media screen and (min-width: 768px) {
+      line-height: calc(16/12);
+    }
+  
+    @media screen and (min-width: 1280px) {
+      font-size: 20px;
+      line-height: calc(24/20);
+    }
+  
+  };
+  
+  .films-list-item__ganres {
+    font-size: 12px;
+    line-height: calc(14/12);
+    font-weight: 500;
+  
+    color: #B92F2C;
+  
+    @media screen and (min-width: 768px) {
+      line-height: calc(16/12);
+    }
+  
+    @media screen and (min-width: 1280px) {
+      font-size: 20px;
+      line-height: calc(24/20);
+    }
+  };
