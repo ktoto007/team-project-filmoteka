@@ -29,7 +29,22 @@ export default class Apiservice {
     }
   }
 
-  async getFilmDetails(id) {
+  async fetchMovieGenres() {
+    try {
+      const url = `${BASE_URL}genre/movie/list?api_key=${API_KEY}`;
+      const response = await fetch(url);
+
+      if (!response.ok) {
+        throw new Error('error');
+      }
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async getMoviesDetails(id) {
     try {
       const response = await fetch(
         `${BASE_URL}movie/${id}?api_key=${API_KEY}&language=${this.lang}`
@@ -41,6 +56,21 @@ export default class Apiservice {
       return data;
     } catch (error) {
       console.log(error);
+    }
+  }
+
+  async getMovieTrailer(id) {
+    const url = `${BASE_URL}movie/${id}/videos?api_key=${API_KEY}`;
+
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`Error`);
+      }
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error:', error);
     }
   }
 

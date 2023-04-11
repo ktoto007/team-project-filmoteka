@@ -1,6 +1,3 @@
-
-
-
 export default class Loader {
   constructor() {
     this.loaderElement = document.createElement('div');

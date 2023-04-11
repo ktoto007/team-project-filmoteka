@@ -34,14 +34,12 @@ export default class Apiservice {
 
 ///////////////Функція для збереження жанрів у вебсховище////////////
 
+function getGenresInfo(genresArray) {
+  const response = genresArray;
 
-function getGenresInfo(genresArray){
- 
-    const response = genresArray;
-  
-    const genres = response.genres;
-     genres.map((item) => {
-      const values = Object.values(item);
-        localStorage.setItem(values[0], values[1]);
-      })
+  const genres = response.genres;
+  genres.map(item => {
+    const values = Object.values(item);
+    localStorage.setItem(values[0], values[1]);
+  });
 }
