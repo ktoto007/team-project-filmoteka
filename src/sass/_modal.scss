@@ -1,56 +1,359 @@
 .modal {
-    // z-index: 150;
-    height: 930px;
-    width: 280px;
-    color: #000;
-    opacity: 1;
-    background-color: #fff;
-    margin-top: 20px;
-    margin-bottom: 38px;
-    // font-weight: 500;
-    transition: all .5s;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    overflow-y: scroll;
-    transform: translate(-50%,-50%)scale(1);
+  // height: 930px;
+  width: 280px;
+  color: #000;
+  opacity: 1;
+  background-color: #fff;
+  margin-top: 20px;
+  margin-bottom: 38px;
+  transition: all .5s;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  overflow-y: scroll;
+  transform: translate(-50%, -50%) scale(1);
+  z-index: 100;
+}
+
+.modal_content {
+  position: relative;
+  background-color: #fefefe;
+  // margin: 15% auto;
+  padding: 20px;
+  // border: 1px solid #888;
+}
+
+.close {
+  position: absolute; /* задаем абсолютное позиционирование для кнопки Close */
+  top: 16px;
+  right: 16px;
+  cursor: pointer;
+}
+.close:hover svg {
+  fill: #B92F2C; /* меняем цвет заливки иконки при наведении на кнопку */
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal_img {
+  display: block;
+  width: 240px;
+  margin-top: 28px;
+  border-radius: 5px;
+}
+
+.main_text_modal {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin: 0;
+}
+
+/* vote, popularity, orig-title, genre */
+
+.modal_list {
+  display: flex;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #8C8C8C;
+  flex-direction: column;
+  list-style-type: none;
+  padding: 0;
+  gap: 8px;
+  padding-bottom: 20px;
+  margin: 0;
+  padding-right: 50px;
+}
+
+.modal_items_container {
+  display: flex;
+  flex-direction: row;
+}
+
+.modal_list_value {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 9px;
+  // margin-top: 2px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+
+
+.vote_span {
+  display: inline-block;
+  font-style: normal;
+  font-weight: 500;
+  padding: 0 10px;
+
+  background-color: #B92F2C;
+  color: #fff;
+
+  border-radius: 5px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.vote_count_span{
+  display: inline-block;
+  font-style: normal;
+  font-weight: 500;
+  padding: 0 4px;
+
+  background-color: #F7F7F7;;
+  color: #000000;
+
+  border-radius: 5px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+
+.delimiter{
+  color: #8C8C8C;
+}
+.about_modal_text {
+  margin: 0;
+  padding-bottom: 8px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #000000;
+  text-transform: uppercase;
+}
+
+.overview_modal{
+margin: 0;
+padding-bottom: 20px;
+  font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 16px;
+
+width:100%;
+// text-align:justify;
+// text-transform: uppercase;
+}
+
+.buttons{
+  display: flex;
+  gap:4px;
+  padding-bottom: 20px;
+}
+
+.button-watched{
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  padding: 10px 10px;
+  text-transform: uppercase;
+
+  color:  #FFFFFF;
+  background: #B92F2C;
+box-shadow: 0px 0px 7px rgba(27, 27, 27, 0.15);
+border-radius: 100px;
+border: none;
+margin: 0;
+
+// width: 125px;
+
+}
+
+.button-queue{
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  padding: 10px 12px;
+  text-transform: uppercase;
+
+color: #B92F2C;
+  background: #FFFFFF;
+border: 1px solid #000000;
+border-radius: 100px;
+// width: 111px;
+margin: 0;
+margin-left: 2px;
+// padding: 0;
+}
+
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+
+@media only screen and (min-width: 768px) and (max-width: 1279px) {
+  .modal {
+  width: 704px;
+  height: 550px;
+
+
   }
-  
-  .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
+  .modal_content {
+display: flex;
+  padding: 40px 72px 64px 36px;
+  // max-width: 100%;
+  // max-height: 100%;
+  // overflow-y: scroll
   }
-  
   .close {
-    display: flex;
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
- 
-  // padding: 0;
-
+  top: 16px;
+  right: 16px;
+  }
+  .modal_img {
+  width: 264px;
+  height: 374px;
+margin: 0;
+margin-right: 68px;
 
   }
-  
-  .close:hover,
-  .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  
- 
 
-  
-    
-    .modal_img{
-      display: block;
-      width: 240px;
-      // height: 357px;
-      margin:28px 0px 20px 0px ;
-      border-radius: 5px;
+  .main_text_modal {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+
+    padding-top: 0;
+    margin: 0;
+  }
+
+  .overview_modal{
+   
+    font-size: 12px;
+    line-height: 20px;
 
     }
+
+    .button-watched{
+      
+      padding: 10px 16px;
+      font-size: 12px;
+      line-height: 14px;
+    
+    }
+    
+    .button-queue{
+     
+      padding: 10px 16px;
+      font-size: 12px;
+      line-height: 14px;
+  
+    }
+    
+
+
+  
+  // .buttons {
+  //   display: flex;
+  //   flex-direction: row;
+  // // justify-content: center;
+  // align-items: center;
+  // }
+ 
+
+
+  }
+
+
+  @media only screen and (min-width: 1280px) and (max-width: 3000px) {
+    .modal {
+    width: 806px;
+    height: 558px;
+  
+  
+    }
+    .modal_content {
+  display: flex;
+    padding: 40px 12px;
+    // max-width: 100%;
+    // max-height: 100%;
+    // overflow-y: scroll
+    }
+    .close {
+    top: 16px;
+    right: 16px;
+    }
+    .modal_img {
+    width: 375px;
+    height: 478px;
+  margin: 0;
+  margin-right: 16px;
+  
+    }
+  
+    .main_text_modal {
+
+      font-size: 30px;
+line-height: 35px;
+  
+      padding-top: 0;
+      margin: 0;
+    }
+  
+    .overview_modal{
+     
+      font-size: 12px;
+      line-height: 20px;
+  
+      }
+
+      // .buttons {
+  //   display: flex;
+  //   flex-direction: row;
+  // // justify-content: center;
+  // align-items: center;
+  // }
+ 
+      .button-watched{
+        height: 42px;
+        padding: 14px 32px;
+        font-size: 12px;
+        line-height: 14px;
+      
+      }
+      
+      .button-queue{
+        height: 42px;
+        padding: 14px 24px;
+        font-size: 12px;
+        line-height: 14px;
+    
+      }
+      
+  
+  
+    
+    // .buttons {
+    //   display: flex;
+    //   flex-direction: row;
+    // justify-content: center;
+    // align-items: center;
+    // }
+   
+  
+  
+    }
+  

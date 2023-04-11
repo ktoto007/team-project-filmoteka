@@ -1,106 +1,123 @@
-
 async function fetchMovieDetails(movieId) {
-    const apiKey = 'aa05d9ef1feff0e96ac321d8773a5c67'; // замените на свой API-ключ
-    const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`);
-    const data = await response.json();
-    return data;
-  }
-  
-  
-  // Определение функции для создания модального окна и заполнения его данными
-  function createModal(movieData) {
-    const modal = document.createElement('div');
-    modal.classList.add('modal');
-  
-    const modalContent = document.createElement('div');
-    modalContent.classList.add('modal-content');
-  
-    const closeBtn = document.createElement('span');
-    closeBtn.classList.add('close');
-    closeBtn.innerHTML = '&times;';
-  
-    const title = document.createElement('h2');
-    title.textContent = movieData.title;
+  const apiKey = 'aa05d9ef1feff0e96ac321d8773a5c67';
+  const response = await fetch(
+    `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`
+  );
+  const data = await response.json();
+  return data;
+}
+// Определение функции для создания модального окна и заполнения его данными
 
-
-    const image = document.createElement('img');
-  image.src = `https://image.tmdb.org/t/p/w500/${movieData.poster_path}`;
-  image.classList.add('modal_img')
-  
-    const voteAverage = document.createElement('p');
-    voteAverage.textContent = `Vote / Votes: ${movieData.vote_average}/ ${movieData.vote_count}`;
-
-    const popularity = document.createElement('p');
-    popularity.textContent = `Popularity: ${movieData.popularity}`;
-
-    const titleOriginal = document.createElement('p');
-    titleOriginal.textContent = `Original Title: ${movieData.title}`;
-
-    const genre = document.createElement('p');
-    genre.textContent = `Genre: ${movieData.genres.map(g => g.name).join(', ')}`;
-  
-    const overview = document.createElement('p');
-    overview.textContent = movieData.overview;
-
-    const addToWatched = document.createElement('button');
-    addToWatched.classList.add('button-watched');
-    addToWatched.textContent = `Add To Watched`
-
-    const addToQueue = document.createElement('button');
-    addToQueue.classList.add('button-queue');
-    addToQueue.textContent = `Add To Queue`
-
+function createModal(movieData) {
+  modal = document.createElement('div');
+  modal.classList.add('modal');
 
   
-    modalContent.appendChild(closeBtn);
-    modalContent.appendChild(image);
-    modalContent.appendChild(title);
+  const modalHTML = `
+    <div class="modal_content">
+    <div class="close">
+    <svg width="16" height="16" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+<path d="M8 8L22 22" stroke="black" stroke-width="2"/>
+<path d="M8 22L22 8" stroke="black" stroke-width="2"/>
+</svg>
+  </div>
+      <img src="https://image.tmdb.org/t/p/w500/${movieData.poster_path}" class="modal_img">
+      <div class="tablet_modal">
+      <h2 class="main_text_modal">${movieData.title}</h2>
+      <div class="modal_items_container">
+        <ul class="modal_list">
+          <li>Vote / Votes</li>
+          <li>Popularity</li>
+          <li>Original Title</li>
+          <li>Genre</li>
+        </ul>
+        <ul class="modal_list_value">
+          <li>
+            <span class="vote_span">${movieData.vote_average.toFixed(1)}</span>
+            <span class="delimiter"> / </span>
+            <span class="vote_count_span">${movieData.vote_count}</span>
+          </li>
+          <li>${movieData.popularity.toFixed(1)}</li>
+          <li>${movieData.title}</li>
+          <li>${movieData.genres[0].name}</li>
+        </ul>
+      </div>
+      <p class="about_modal_text">About</p>
+      <p class="overview_modal">${movieData.overview}</p>
+      <div class="buttons">
+        <button class="button-watched">Add to Watched</button>
+        <button class="button-queue">Add to Queue</button>
+      </div>
+    </div>
+    </div>
+  `;
 
-    modalContent.appendChild(voteAverage);
-    modalContent.appendChild(popularity);
-    modalContent.appendChild(titleOriginal);
-    modalContent.appendChild(genre);
-    modalContent.appendChild(overview);
-  
-    modal.appendChild(modalContent);
+  modal.innerHTML += modalHTML;
 
-    modalContent.appendChild(addToWatched)
-    modalContent.appendChild(addToQueue)
+  document.body.appendChild(modal);
 
-  
-    document.body.appendChild(modal);
-  
-    // Добавление обработчика события на кнопку "Закрыть"
-    closeBtn.addEventListener('click', () => {
-      modal.remove();
-    });
-  }
-  
-  // Определение функции для обработки нажатия на кнопку и получения данных от API
-  async function handleModalBtnClick() {
-    const movieId = 400; // ID фильма, для которого нужно открыть модальное окно
-    const movieData = await fetchMovieDetails(movieId);
-    createModal(movieData);
-  }
-  
-  // Добавление обработчика события на кнопку "Открыть модальное окно"
-  const modalBtn = document.querySelector('#modalBtn');
-  modalBtn.addEventListener('click', handleModalBtnClick);
-  
+  const closeBtn = modal.querySelector('.close');
 
+  closeBtn.addEventListener('click', () => {
+    closeModal();
+    backdrop.remove();
+  });
 
-  
-  function openModal() {
-    var modal = document.querySelector(".modal");
-    if (!modal) {
-      createModal();
-      modal = document.querySelector(".modal");
+  const closeOnEsc = (event) => {
+    if (event.key === 'Escape') {
+      closeModal();
+      backdrop.remove();
     }
-    modal.style.display = "block";
   }
-  
-  function closeModal() {
-    var modal = document.querySelector(".modal");
-    modal.style.display = "none";
+
+  document.addEventListener('keydown', closeOnEsc);
+}
+
+//================= Определение функции для обработки нажатия на кнопку и получения данных от API================
+async function handleModalBtnClick() {
+  const movieId = 255; // ID фильма, для которого нужно открыть модальное окно==========================
+  const movieData = await fetchMovieDetails(movieId);
+  createModal(movieData);
+  createBackdrop();
+}
+
+
+//===========БЕКДРОП=================
+function createBackdrop() {
+  backdrop = document.createElement('div');
+  backdrop.classList.add('modal-backdrop');
+
+  document.body.appendChild(backdrop);
+
+  const closeBackdrop = () => {
+    backdrop.remove();
+    closeModal();
   }
-  console.log(createModal());
+
+  backdrop.addEventListener('click', closeBackdrop);
+
+  const closeOnEsc = (event) => {
+    if (event.key === 'Escape') {
+      closeBackdrop();
+      backdrop.remove();
+
+    }
+  }
+
+  document.addEventListener('keydown', closeOnEsc);
+}
+
+//=================== Добавление обработчика события на кнопку "Открыть модальное окно"================
+const modalBtn = document.querySelector('#modalBtn');
+modalBtn.addEventListener('click', handleModalBtnClick);
+
+
+//========
+
+function closeModal() {
+  modal.remove();
+  backdrop.remove();
+
+  document.removeEventListener('keydown', closeOnEsc);
+}
+
