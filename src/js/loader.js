@@ -1,4 +1,4 @@
-export default class Loader {
+ class Loader {
   constructor() {
     this.loaderElement = document.createElement('div');
     this.loaderElement.className = 'loader';
@@ -12,3 +12,5 @@ export default class Loader {
     this.loaderElement.remove();
   }
 }
+
+export const loader = new Loader();
