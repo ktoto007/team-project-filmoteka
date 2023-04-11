@@ -2,7 +2,7 @@
 
 export default function renderMarkupFilmsCard(films) {
   const markupFilmsCard = films
-    .map(({ title, poster_path, release_date, genre_ids }) => {
+    .map(({ title, poster_path, release_date, genre_ids, id }) => {
       // Перевірка кількості жанрів
 
       const genresId = genre_ids.map(id => localStorage.getItem(id));
@@ -18,7 +18,7 @@ export default function renderMarkupFilmsCard(films) {
 
       return `
           <li class="films-list__item">
-                <a href="">
+                <a id=${id}>
                   <img class="films-list-item__poster" src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}" loading="lazy"  />
                   <div class="films-list-item__info">
                     <h2 class="films-list-item__tittle">${title}</h2>
