@@ -1,6 +1,4 @@
-import NewFilmApiServise from './filmsAPIServise';
-
-const apiService = new NewFilmApiServise();
+import { apiService } from './filmsAPIServise';
 
 async function getGenresInfo() {
   const response = await apiService.fetchMovieGenres();
