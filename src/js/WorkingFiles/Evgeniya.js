@@ -43,3 +43,36 @@ function getGenresInfo(genresArray) {
     localStorage.setItem(values[0], values[1]);
   });
 }
+
+
+
+//////Clear localstorage on click "Remove from Queue"///////////
+
+function clearLocalstorageFromQueue(film) {
+        
+    const currentMovie = film;
+    const queueMovies = JSON.parse(localStorage.getItem('queue'));
+ 
+    
+    if (queueMovies.find(queueMovie => queueMovie.id === currentMovie.id)) {
+        
+        localStorage.setItem('queue', JSON.stringify(queueMovies.filter(queueMovie => queueMovie.id !== currentMovie.id)));
+    }
+    return;
+}
+
+
+//////Clear localstorage on click "Remove from Watched"///////////
+
+function clearLocalstorageFromWatched(film) {
+        
+    const currentMovie = film;
+    const watchedMovies = JSON.parse(localStorage.getItem('watched'));
+ 
+    
+    if (watchedMovies.find(watchedMovies => watchedMovies.id === watchedMovies.id)) {
+        
+        localStorage.setItem('watched', JSON.stringify(watchedMovies.filter(watchedMovies => watchedMovies.id !== currentMovie.id)));
+    }
+    return;
+}
