@@ -4,10 +4,15 @@ export default function renderMarkupFilmsCard(films) {
   const markupFilmsCard = films
     .map(({ title, poster_path, release_date, genre_ids }) => {
       // Перевірка кількості жанрів
-      if (genre_ids.length > 2) {
-        genre_ids.splice(2, genre_ids.length - 2, 'Other');
+
+      const genresId = genre_ids.map(id => localStorage.getItem(id));
+      
+      if (genresId.length > 2) {
+        genresId.splice(2, genresId.length - 2, 'Other');
       }
 
+      const genres = genresId.join(', ');
+      
       // Обрізання повної дати до року
       const yearRelease = release_date.slice(0, 4);
 
@@ -18,7 +23,7 @@ export default function renderMarkupFilmsCard(films) {
                   <div class="films-list-item__info">
                     <h2 class="films-list-item__tittle">${title}</h2>
                     <p class="films-list-item__ganres">
-                      <span class="films-list-item__year">${genre_ids} | ${yearRelease}</span>
+                      <span class="films-list-item__year">${genres} | ${yearRelease}</span>
                     </p>
                   </div>
                 </a>`;
