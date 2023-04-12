@@ -12,7 +12,7 @@ async function getGenresInfo() {
 
 getGenresInfo();
 
-class libraryLogic {
+class LibraryLogic {
   constructor() {}
   removeFromLocalstorage(film, type) {
     if (type == 'Queue') {
@@ -42,4 +42,4 @@ class libraryLogic {
   }
 }
 
-export const libraryLogic = new libraryLogic();
+export const libraryLogic = new LibraryLogic();
