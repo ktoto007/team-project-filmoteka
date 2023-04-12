@@ -3,7 +3,7 @@ import { apiService } from './filmsAPIServise';
 // import refs from './refs';
 import renderMarkupFilmsCard from './renderMarkupFilmsCard';
 import { loader } from './loader';
-import buildingPagination from './renderingPagination';
+import { lastPage, buildingPagination } from './renderingPagination';
 
  export const refs = {
   homeHeaderForm: document.querySelector('.header__form'),
@@ -29,7 +29,7 @@ window.addEventListener('resize', evt => {
   try {
     const filmsForCurrentPage = JSON.parse(localStorage.getItem('currentPage'));
     apiService.page = filmsForCurrentPage.page;
-    buildingPagination(filmsForCurrentPage)
+    buildingPagination(filmsForCurrentPage);
   } catch(error) {console.log(error.message)}
 })
 document.addEventListener('submit', gettingMoviesByKeyword);

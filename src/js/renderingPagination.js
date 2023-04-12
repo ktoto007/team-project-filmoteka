@@ -1,7 +1,9 @@
-import { refs } from './refs' ;
+import { refs } from './refs';
 
-export default function buildingPagination({ page, total_pages: totalPages }) {
-    screenWidth = window.screen.width;
+export let lastPage = null; 
+
+export function buildingPagination({ page, total_pages: totalPages }) {
+   const screenWidth = window.screen.width;
     lastPage = totalPages;
     
 // Пагінація для Mobile
