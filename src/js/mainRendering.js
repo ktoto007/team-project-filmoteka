@@ -2,15 +2,13 @@
 import { apiService } from './filmsAPIServise';
 // import refs from './refs';
 import renderMarkupFilmsCard from './renderMarkupFilmsCard';
-import Loader from './loader';
-import buildingPagination from './pagination';
+import { loader } from './loader';
+import buildingPagination from './renderingPagination';
 
  export const refs = {
   homeHeaderForm: document.querySelector('.header__form'),
   cardContainer: document.querySelector('.cards-container'),
 };
-
-const loader = new Loader();
 
 document.addEventListener('DOMContentLoaded', receivingPopularFilms);
 
@@ -19,13 +17,21 @@ document.addEventListener('DOMContentLoaded', receivingPopularFilms);
   const responce = await apiService.getPopularMovies();
   loader.hide();
 
-  apiService.requestType = 'trending';
+   apiService.requestType = 'trending';
+   try { localStorage.setItem('currentPage', JSON.stringify(responce))} catch (error){console.log(error.message)};
   buildingPagination(responce);
   return (refs.cardContainer.innerHTML = renderMarkupFilmsCard(
     responce.results
   ));
 }
 
+window.addEventListener('resize', evt => {
+  try {
+    const filmsForCurrentPage = JSON.parse(localStorage.getItem('currentPage'));
+    apiService.page = filmsForCurrentPage.page;
+    buildingPagination(filmsForCurrentPage)
+  } catch(error) {console.log(error.message)}
+})
 document.addEventListener('submit', gettingMoviesByKeyword);
 
 async function gettingMoviesByKeyword(e) {
