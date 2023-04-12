@@ -1,29 +1,27 @@
 import { apiService } from './filmsAPIServise';
 
 //=================== Добавление обработчика события на кнопку "Открыть модальное окно"================
-const cardsContainer = document.querySelector('.cards-container')
+let modal;
+
+const cardsContainer = document.querySelector('.cards-container');
 cardsContainer.addEventListener('click', handleModalBtnClick);
 
 function handleModalBtnClick(event) {
-
   if (event.target.closest('.films-list__link')) {
     const idFilm = event.target.closest('.films-list__link').getAttribute('id');
 
     apiService.getMoviesDetails(idFilm).then(movieData => {
-    createModal(movieData);
-    createBackdrop()
-    
-    
+      createModal(movieData);
+      createBackdrop();
     });
   }
 }
 
 function createModal(movieData) {
-    modal = document.createElement('div');
-    modal.classList.add('modal');
-  
-    
-    const modalHTML = `
+  modal = document.createElement('div');
+  modal.classList.add('modal');
+
+  const modalHTML = `
       <div class="modal_content">
       <div class="close">
       <svg width="16" height="16" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
@@ -31,7 +29,9 @@ function createModal(movieData) {
   <path d="M8 22L22 8" stroke="black" stroke-width="2"/>
   </svg>
     </div>
-        <img src="https://image.tmdb.org/t/p/w500/${movieData.poster_path}" class="modal_img">
+        <img src="https://image.tmdb.org/t/p/w500/${
+          movieData.poster_path
+        }" class="modal_img">
         <div class="tablet_modal">
         <h2 class="main_text_modal">${movieData.title}</h2>
         <div class="modal_items_container">
@@ -43,7 +43,9 @@ function createModal(movieData) {
           </ul>
           <ul class="modal_list_value">
             <li>
-              <span class="vote_span">${movieData.vote_average.toFixed(1)}</span>
+              <span class="vote_span">${movieData.vote_average.toFixed(
+                1
+              )}</span>
               <span class="delimiter"> / </span>
               <span class="vote_count_span">${movieData.vote_count}</span>
             </li>
@@ -61,54 +63,53 @@ function createModal(movieData) {
       </div>
       </div>
     `;
-  
-    modal.innerHTML = modalHTML;
-  
-    document.body.appendChild(modal);
-  
-    const closeBtn = modal.querySelector('.close');
-  
-    closeBtn.addEventListener('click', () => {
+
+  modal.innerHTML = modalHTML;
+
+  document.body.appendChild(modal);
+
+  const closeBtn = modal.querySelector('.close');
+
+  closeBtn.addEventListener('click', () => {
+    closeModal();
+    backdrop.remove();
+  });
+
+  const closeOnEsc = event => {
+    if (event.key === 'Escape') {
       closeModal();
       backdrop.remove();
-    });
-  
-    const closeOnEsc = (event) => {
-      if (event.key === 'Escape') {
-        closeModal();
-        backdrop.remove();
-      }
     }
-  
-    document.addEventListener('keydown', closeOnEsc);
-  }
+  };
 
-  //===========БЕКДРОП=================
-  function createBackdrop() {
-    backdrop = document.createElement('div');
-    backdrop.classList.add('modal-backdrop');
-  
-    document.body.appendChild(backdrop);
-  
-    const closeBackdrop = () => {
-      // backdrop.remove();
-      closeModal();
+  document.addEventListener('keydown', closeOnEsc);
+}
+
+//===========БЕКДРОП=================
+function createBackdrop() {
+  backdrop = document.createElement('div');
+  backdrop.classList.add('modal-backdrop');
+
+  document.body.appendChild(backdrop);
+
+  const closeBackdrop = () => {
+    // backdrop.remove();
+    closeModal();
+  };
+
+  backdrop.addEventListener('click', closeBackdrop);
+
+  const closeOnEsc = event => {
+    if (event.key === 'Escape') {
+      closeBackdrop();
+      document.removeEventListener('keydown', closeOnEsc);
     }
-  
-    backdrop.addEventListener('click', closeBackdrop);
-  
-    const closeOnEsc = (event) => {
-      if (event.key === 'Escape') {
-        closeBackdrop();
-        document.removeEventListener('keydown', closeOnEsc);
-      }
-    }
-  
-    document.addEventListener('keydown', closeOnEsc);
-  }
+  };
 
+  document.addEventListener('keydown', closeOnEsc);
+}
 
-  function closeModal() {
-    modal.remove();
-    backdrop.remove();
-  }
+function closeModal() {
+  modal.remove();
+  backdrop.remove();
+}
