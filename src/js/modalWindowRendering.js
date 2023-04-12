@@ -1,19 +1,24 @@
-async function fetchMovieDetails(movieId) {
-    const apiKey = 'aa05d9ef1feff0e96ac321d8773a5c67';
-    const response = await fetch(
-      `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`
-    );
-    const data = await response.json();
-    return data;
+import { apiService } from './filmsAPIServise';
+
+//=================== Добавление обработчика события на кнопку "Открыть модальное окно"================
+const cardsContainer = document.querySelector('.cards-container')
+cardsContainer.addEventListener('click', handleModalBtnClick);
+
+function handleModalBtnClick(event) {
+
+  if (event.target.closest('.films-list__link')) {
+    const idFilm = event.target.closest('.films-list__link').getAttribute('id');
+
+    apiService.getMoviesDetails(idFilm).then(movieData => {
+    createModal(movieData);
+    createBackdrop()
+    
+    
+    });
   }
+}
 
-// import movieId from './Oleksandra';
-  // Определение функции для создания модального окна и заполнения его данными
-
-  
-  function createModal(movieData) {
-
-    console.log(movieData)
+function createModal(movieData) {
     modal = document.createElement('div');
     modal.classList.add('modal');
   
@@ -77,9 +82,7 @@ async function fetchMovieDetails(movieId) {
   
     document.addEventListener('keydown', closeOnEsc);
   }
-  
 
-  
   //===========БЕКДРОП=================
   function createBackdrop() {
     backdrop = document.createElement('div');
@@ -98,60 +101,14 @@ async function fetchMovieDetails(movieId) {
       if (event.key === 'Escape') {
         closeBackdrop();
         document.removeEventListener('keydown', closeOnEsc);
-        // backdrop.remove();
-  
       }
     }
   
     document.addEventListener('keydown', closeOnEsc);
   }
-  
-  //=================== Добавление обработчика события на кнопку "Открыть модальное окно"================
-  // const modalBtn = document.querySelector('#modalBtn');
-  const cardsContainer = document.querySelector('.cards-container')
-  cardsContainer.addEventListener('click', handleModalBtnClick);
 
-  function handleModalBtnClick(event) {
-    console.log(event.target)
-    console.log(event.currentTarget)
 
-    if (event.target.closest('.films-list__link')) {
-      const idFilm = event.target.closest('.films-list__link').getAttribute('id');
-      console.log(idFilm);
-
-      fetchMovieDetails(idFilm).then(movieData => {
-        console.log(movieData)
-      createModal(movieData);
-      createBackdrop()
-      
-      
-      });
-    }
-  }
-  
-  //========
-  
   function closeModal() {
     modal.remove();
     backdrop.remove();
-    // document.removeEventListener('keydown', closeOnEsc);
-  }
-  
-
-
-  // =========================Функції для роботи з кнопками всередині модалки=================
-  
-
-  const btnWatched = document.querySelector('.button-watched');
-  const btnQueue = document.querySelector('.button-queue');
-
-  btnWatched.addEventListener('click', openWatchedList);
-  btnQueue.addEventListener('click', addFilmToQueue);
-
-  function openWatchedList() {
-
-  }
-
-  function addFilmToQueue() {
-    
   }
