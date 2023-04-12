@@ -1,0 +1,71 @@
+.footer_modal {
+  overflow-y: hidden;
+  padding: 10px;
+  background-color: #fefefe;
+  @media screen and (min-width: 768px) {
+    padding: 30px;
+  }
+}
+.footer_modal-header {
+  margin-bottom: 20px;
+}
+.footer-modal_title {
+  font-size: 18px;
+}
+.footer_gallery {
+  display: flex;
+  align-items: center;
+}
+.footer-modal_img {
+  height: 35px;
+}
+.gallery {
+  margin-bottom: 20px;
+}
+.gallery-arrow {
+  border: none;
+  font-size: 18px;
+}
+.team {
+  margin: 0;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    margin: 0 10px;
+  }
+}
+.team-modal_img {
+  height: 288px;
+  max-width: 100%;
+  object-fit: cover;
+  display: block;
+  margin: 0 0 20px 0;
+}
+.team-container {
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+}
+.team-container:not(:last-child) {
+  margin-bottom: 10px;
+
+  @media screen and (min-width: 768px) {
+    margin-right: 10px;
+    margin-bottom: 0;
+  }
+}
+.team-title {
+    font-size: 22px;
+  display: block;
+//   margin-bottom: 10px;
+  padding: 0;
+  color: black;
+}
+.team-title:hover,
+.team-title:focus {
+  color: #b92f2c;
+}
+
+.footer-modal_button {
+  display: block;
+  margin: auto;
+}
