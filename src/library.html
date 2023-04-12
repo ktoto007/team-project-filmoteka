@@ -8,6 +8,72 @@
     <link rel="shortcut icon" href="./img/favicon.png" />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+
+      rel="stylesheet"/>
+
+    <link rel="stylesheet" href="./sass/index.scss" />
+
+  </head>
+    <body>
+          <div class="header">
+      <div class="header__container container">
+        <div class="header__background">
+          <div class ="header__list"> 
+          <div class="header__wrapper">
+            
+            <div class="header__btn-wrapper">
+                       
+              <a href="./index.html"
+                ><button class="header__btn-home button" type="button">
+                  HOME
+                </button></a>
+              <a href="./library.html"><button class="header__btn-library button" type="button">
+                  MY LIBRARY
+                </button></a>
+            </div>
+            
+            <form class="header__form">
+              <input class="header__form-input"
+                name="query"
+                type="text"
+                placeholder="Movie Search"/>
+              <button class="header__form-btn button" type="submit">
+                <svg class="header__form-svg">
+                  <use href="./img/icons.svg#icon-search-2"></use>
+                </svg>
+              </button>
+            
+            </form>
+          </div>
+          <div class="header__btn-top">
+            <button class="header__btn-watched button" type="button">WATCHED</button>
+            <button class="header__btn-queue button" type="button">QUEUE</button>
+            </div>
+          </div>
+
+          <div class="header__btn-bottom">
+            <div class="header__btn">
+              <button class="header__btn-watched button " type="button">
+                WATCHED
+              </button>
+              <button class="header__btn-queue button"  type="button">QUEUE</button>
+            </div>
+             <a class="header__logo-link" href="#">
+              <svg class="header__film-svg" >
+                <use href="./img/icons.svg#icon-film-1"></use> 
+              </svg>
+              <h1 class="header__title">Filmoteka</h1>
+            </a>
+          </div>
+        </div>
+      </div>
+          </div>
+    <script type="module" src="./library.js"></script>
+    <!-- ❗️❗️❗️ Add partials like so for every page -->
+    <include src="./partials/footer.html"></include>
+  </body>
+  
+
       rel="stylesheet"
     />
 
@@ -18,4 +84,5 @@
     <!-- ❗️❗️❗️ Add partials like so for every page -->
     <include src="./partials/footer.html"></include>
   </body>
+
 </html>
