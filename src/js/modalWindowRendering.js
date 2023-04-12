@@ -2,7 +2,7 @@ import { apiService } from './filmsAPIServise';
 
 //=================== Добавление обработчика события на кнопку "Открыть модальное окно"================
 let modal;
-
+let backdrop;
 const cardsContainer = document.querySelector('.cards-container');
 cardsContainer.addEventListener('click', handleModalBtnClick);
 
