@@ -18,7 +18,7 @@ export default function renderMarkupFilmsCard(films) {
 
       return `
           <li class="films-list__item">
-                <a id=${id}>
+                <a class="films-list__link" id=${id}>
                   <img class="films-list-item__poster" src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}" loading="lazy"  />
                   <div class="films-list-item__info">
                     <h2 class="films-list-item__tittle">${title}</h2>
@@ -26,9 +26,12 @@ export default function renderMarkupFilmsCard(films) {
                       <span class="films-list-item__year">${genres} | ${yearRelease}</span>
                     </p>
                   </div>
-                </a>`;
+                </a></li>`;
     })
     .join('');
 
   return markupFilmsCard;
 }
+
+
+
