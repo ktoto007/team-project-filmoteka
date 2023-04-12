@@ -150,47 +150,43 @@ width:100%;
 // text-transform: uppercase;
 }
 
-.buttons{
+.buttons-modal{
   display: flex;
   gap:4px;
-  padding-bottom: 20px;
 }
 
-.button-watched{
-  font-style: normal;
+.button-modal{
   font-weight: 500;
   font-size: 12px;
-  line-height: 14px;
-  padding: 10px 10px;
+  line-height: calc(14/12);
+
   text-transform: uppercase;
 
-  color:  #FFFFFF;
-  background: #B92F2C;
-box-shadow: 0px 0px 7px rgba(27, 27, 27, 0.15);
-border-radius: 100px;
-border: none;
-margin: 0;
+  color:  #B92F2C;
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  border-radius: 100px;
+}
+.button-watched{
+  padding: 10px 12px;
+  margin: 0;
 
 // width: 125px;
-
 }
 
 .button-queue{
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 14px;
-  padding: 10px 12px;
-  text-transform: uppercase;
-
-color: #B92F2C;
-  background: #FFFFFF;
-border: 1px solid #000000;
-border-radius: 100px;
+  padding: 10px 14px;
+  
 // width: 111px;
 margin: 0;
 margin-left: 2px;
 // padding: 0;
+}
+
+.button-watched:hover,.button-watched:focus,.button-queue:hover,.button-queue:focus{
+  color:  #FFFFFF;
+  background: #B92F2C;
+  border: none;
 }
 
 

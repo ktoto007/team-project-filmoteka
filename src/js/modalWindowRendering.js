@@ -3,6 +3,8 @@ import { apiService } from './filmsAPIServise';
 //=================== Добавление обработчика события на кнопку "Открыть модальное окно"================
 let modal;
 let backdrop;
+let btnWatched;
+let btnQueue;
 const cardsContainer = document.querySelector('.cards-container');
 cardsContainer.addEventListener('click', handleModalBtnClick);
 
@@ -56,9 +58,9 @@ function createModal(movieData) {
         </div>
         <p class="about_modal_text">About</p>
         <p class="overview_modal">${movieData.overview}</p>
-        <div class="buttons">
-          <button class="button-watched" type="button">Add to Watched</button>
-          <button class="button-queue" type="button">Add to Queue</button>
+        <div class="buttons-modal">
+          <button class="button-modal button-watched" type="button">Add to Watched</button>
+          <button class="button-modal button-queue" type="button">Add to Queue</button>
         </div>
       </div>
       </div>
@@ -83,6 +85,15 @@ function createModal(movieData) {
   };
 
   document.addEventListener('keydown', closeOnEsc);
+
+  btnWatched = document.querySelector('.button-watched');
+  btnQueue = document.querySelector('.button-queue');
+  console.log(btnWatched);
+  console.log(btnQueue);
+  btnWatched.addEventListener('click', openWatchedList);
+  btnQueue.addEventListener('click', addFilmToQueue);
+
+  
 }
 
 //===========БЕКДРОП=================
@@ -113,3 +124,21 @@ function closeModal() {
   modal.remove();
   backdrop.remove();
 }
+
+function openWatchedList(event) {
+    console.log('виконую функцію watched')
+    btnQueue.setAttribute('disabled', '')
+
+    if (event.currentTarget.textContent === 'Add to Watched') {
+        event.currentTarget.textContent = 'Remove from Watched';
+        return
+    } else if(event.currentTarget.textContent === 'Remove from Watched') {
+        event.currentTarget.textContent = 'Add to Watched'
+        btnQueue.removeAttribute('disabled');
+    }
+
+  }
+
+function addFilmToQueue() {
+    console.log('виконую функцію Queue')
+  }

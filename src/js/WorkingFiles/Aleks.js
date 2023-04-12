@@ -142,16 +142,4 @@ async function fetchMovieDetails(movieId) {
   // =========================Функції для роботи з кнопками всередині модалки=================
   
 
-  const btnWatched = document.querySelector('.button-watched');
-  const btnQueue = document.querySelector('.button-queue');
-
-  btnWatched.addEventListener('click', openWatchedList);
-  btnQueue.addEventListener('click', addFilmToQueue);
-
-  function openWatchedList() {
-
-  }
-
-  function addFilmToQueue() {
-    
-  }
+  
