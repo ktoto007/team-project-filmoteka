@@ -143,6 +143,7 @@
   .header__btn-wrapper {
     display: flex;
         @media screen and (min-width: 768px) {
+  
       margin-bottom: 0px;
       margin-top: 0;
       padding-top: 0;
@@ -346,16 +347,4 @@
     }
   }
   
-    
-  .header__btn-bottom {
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
   
-    @media screen and (min-width: 768px) {
-      display: flex;
-      flex-direction: row-reverse;
-      justify-content: flex-end;
-      padding-bottom: 0;
-    }
-}

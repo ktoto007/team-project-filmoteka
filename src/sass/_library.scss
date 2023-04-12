@@ -1,0 +1,88 @@
+
+.header__list {
+    display: flex;
+    
+}
+
+.header__btn-top {
+    
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
+    margin-left: auto;
+  }
+
+  .header__btn-bottom {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    
+  
+    @media screen and (min-width: 768px) {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+      padding-bottom: 0;
+    }
+  }
+  .header__btn {
+    margin-top: 16px;
+    
+    @media screen and (min-width: 768px) {
+      display: flex;
+      margin-top: 0;
+      display: none;
+     
+    }
+  }
+  .header__btn-watched {
+    
+    padding: 10px 23px;
+    width: 102px;
+    height: 34px;
+    border-radius: 100px;
+  
+    font-weight: 500;
+    font-size: 12px;
+    line-height: calc(14 / 12);
+    text-transform: uppercase;
+    cursor: pointer;
+    color: #b92f2c;
+    background: #ffffff;
+  
+    @media screen and (min-width: 768px) {
+      height: 38px;
+      padding: 12px 23px;
+    }
+    @media screen and (min-width: 1280px) {
+      margin-right: 8px;
+      width: 120px;
+      height: 42px;
+      padding: 14px 32px;
+    }
+  }
+  .header__btn-queue {
+    padding: 10px 24px;
+    width: 86px;
+    height: 34px;
+    border-radius: 100px;
+  
+    font-weight: 500;
+    font-size: 12px;
+    line-height: calc(14 / 12);
+    text-transform: uppercase;
+    cursor: pointer;
+    color: #b92f2c;
+    background: #ffffff;
+  
+    @media screen and (min-width: 768px) {
+      padding: 12px 24px;
+      height: 38px;
+    }
+    @media screen and (min-width: 1280px) {
+      height: 42px;
+      padding: 14px 24px;
+    }
+  }
+  
+  
