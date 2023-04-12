@@ -1,0 +1,35 @@
+/* Стилі для спіннера */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Анімація спіннера */
+.loader::after {
+    content: "";
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 7px solid black;
+    border-color: #f11243 transparent #f11243 transparent;
+    animation: spin 0.8s linear infinite;
+}
+
+/* Обертання спіннера */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
