@@ -52,7 +52,7 @@ export function buildingPagination({ page, total_pages: totalPages }) {
     <li><button class="button-pagination button-page" type="button" id="page-5">5</button></li>
     <li><button class="button-pagination button-page" type="button" id="page-6">6</button></li>
     <li><button class="button-pagination button-page" type="button" id="page-7">7</button></li>
-    <li><button class="button-pagination button-page" type="button">...</button></li>
+    <li><button class="button-pagination button-page" type="button" disabled>...</button></li>
     <li><button class="button-pagination button-page" type="button">${totalPages}</button></li>
 `;
     const currentPage = document.querySelector(`#page-${page}`);
@@ -62,7 +62,7 @@ export function buildingPagination({ page, total_pages: totalPages }) {
 
   if (page + 5 >= totalPages) {
     refs.buttonsPagesList.innerHTML = `<li><button class="button-pagination button-page" type="button">1</button></li>
-    <li><button class="button-pagination button-page" type="button">...</button></li>
+    <li><button class="button-pagination button-page" type="button" disabled>...</button></li>
     <li><button class="button-pagination button-page" type="button" id="page-${totalPages-6}">${totalPages - 6}</button></li>
     <li><button class="button-pagination button-page" type="button" id="page-${totalPages-5}">${totalPages - 5}</button></li>
     <li><button class="button-pagination button-page" type="button" id="page-${totalPages-4}">${totalPages - 4}</button></li>
@@ -80,13 +80,13 @@ export function buildingPagination({ page, total_pages: totalPages }) {
   if (page >= 5) {
     refs.buttonsPagesList.innerHTML = `
         <li><button class="button-pagination button-page" type="button">1</button></li>
-        <li><button class="button-pagination button-page" type="button">...</button></li>
+        <li><button class="button-pagination button-page" type="button" disabled>...</button></li>
         <li><button class="button-pagination button-page" type="button">${page - 2}</button></li>
         <li><button class="button-pagination button-page" type="button">${page - 1}</button></li>
         <li><button class="button-pagination button-page current-page" type="button">${page}</button></li>
         <li><button class="button-pagination button-page" type="button">${page + 1}</button></li>
         <li><button class="button-pagination button-page" type="button">${page + 2}</button></li>
-        <li><button class="button-pagination button-page" type="button">...</button></li>
+        <li><button class="button-pagination button-page" type="button" disabled>...</button></li>
         <li><button class="button-pagination button-page" type="button">${totalPages}</button></li>
     `;
       return;
