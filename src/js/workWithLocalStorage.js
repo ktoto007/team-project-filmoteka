@@ -13,30 +13,30 @@ async function getGenresInfo() {
 getGenresInfo();
 
 class LibraryLogic {
-  constructor() { }
+  constructor() {}
+
   addToLocalStorage(film, listType) {
-  let moviesList;
+    let moviesList;
 
-   // Перевірка типу списку та отримання відповідного списку фільмів з localStorage
-  if (listType === 'watched') {
-    moviesList = JSON.parse(localStorage.getItem('watched')) || [];
-  } else if (listType === 'queue') {
-    moviesList = JSON.parse(localStorage.getItem('queue')) || [];
-  }
+    // Перевірка типу списку та отримання відповідного списку фільмів з localStorage
+    if (listType === 'watched') {
+      moviesList = JSON.parse(localStorage.getItem('watched')) || [];
+    } else if (listType === 'queue') {
+      moviesList = JSON.parse(localStorage.getItem('queue')) || [];
+    }
 
-  // Перевірка на наявність дублікатів в списку фільмів
-  if (!moviesList.find(movie => movie.id === film.id)) {
-    
-    // Додавання фільму до списку
-    moviesList.push(film);
-    
-    // Оновлення localStorage
-    localStorage.setItem(listType, JSON.stringify(moviesList));
+    // Перевірка на наявність дублікатів в списку фільмів
+    if (!moviesList.find(movie => movie.id === film.id)) {
+      // Додавання фільму до списку
+      moviesList.push(film);
+
+      // Оновлення localStorage
+      localStorage.setItem(listType, JSON.stringify(moviesList));
+    }
   }
-}
 
   removeFromLocalstorage(film, type) {
-    if (type == 'Queue') {
+    if (type == 'queue') {
       const queueMovies = JSON.parse(localStorage.getItem('queue'));
       if (queueMovies.find(queueMovie => queueMovie.id === film.id)) {
         localStorage.setItem(
@@ -59,6 +59,20 @@ class LibraryLogic {
         );
       }
       return;
+    }
+  }
+
+  getFromStorage(key) {
+    try {
+      const movieStorage = localStorage.getItem(key);
+      if (movieStorage === null) {
+        return [];
+      } else {
+        return JSON.parse(movieStorage);
+      }
+    } catch (error) {
+      console.log(`Error`);
+      return [];
     }
   }
 }
