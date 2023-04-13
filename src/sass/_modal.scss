@@ -1,153 +1,121 @@
 .modal {
-  // height: 930px;
   width: 280px;
-  color: #000;
-  opacity: 1;
   background-color: #fff;
-  margin-top: 20px;
-  margin-bottom: 38px;
   transition: all .5s;
   position: fixed;
   top: 50%;
   left: 50%;
   overflow-y: scroll;
-  transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%); 
   z-index: 100;
 }
 
 .modal_content {
   position: relative;
-  background-color: #fefefe;
-  // margin: 15% auto;
-  padding: 20px;
-  // border: 1px solid #888;
+  padding: 48px 20px 40px 20px;
 }
 
 .close {
   position: absolute; /* задаем абсолютное позиционирование для кнопки Close */
   top: 16px;
   right: 16px;
+  fill: black;
+  
   cursor: pointer;
 }
-.close:hover svg {
-  fill: #B92F2C; /* меняем цвет заливки иконки при наведении на кнопку */
-}
+
+
 
 .close:hover,
 .close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
+  fill: #B92F2C;
 }
 
 .modal_img {
-  display: block;
   width: 240px;
-  margin-top: 28px;
+  margin-bottom: 20px;
   border-radius: 5px;
 }
 
 .main_text_modal {
+  color: #000000;
   font-weight: 500;
   font-size: 20px;
-  line-height: 23px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  margin: 0;
+  line-height: calc(23/20);
+  margin-bottom: 20px;
 }
 
-/* vote, popularity, orig-title, genre */
-
-.modal_list {
-  display: flex;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
-  color: #8C8C8C;
-  flex-direction: column;
-  list-style-type: none;
-  padding: 0;
-  gap: 8px;
-  padding-bottom: 20px;
-  margin: 0;
-  padding-right: 50px;
-}
 
 .modal_items_container {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
-.modal_list_value {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  gap: 9px;
-  // margin-top: 2px;
-  font-style: normal;
+.modal-text{
   font-weight: 500;
   font-size: 12px;
-  line-height: 16px;
+  line-height: calc(16/12);
+  color: #000000;
 }
 
+.modal_list {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding: 0;
+  gap: 8px;
+  padding: 0px;
 
+  
+  color: #8C8C8C;
+}
+
+.modal_list--black {
+  color: #000000;
+}
+
+.modal-item__info{
+  font-weight: 500;
+font-size: 12px;
+line-height: calc(14/12);
+}
 
 .vote_span {
   display: inline-block;
-  font-style: normal;
-  font-weight: 500;
-  padding: 0 10px;
+  padding: 1px 10px;
 
   background-color: #B92F2C;
   color: #fff;
 
   border-radius: 5px;
-  text-align: center;
-  text-transform: uppercase;
 }
 
 .vote_count_span{
-  display: inline-block;
-  font-style: normal;
-  font-weight: 500;
-  padding: 0 4px;
+  padding: 1px 4px;
 
   background-color: #F7F7F7;;
   color: #000000;
 
   border-radius: 5px;
-  text-align: center;
-  text-transform: uppercase;
 }
 
 
 .delimiter{
   color: #8C8C8C;
 }
+
+
+
 .about_modal_text {
-  margin: 0;
-  padding-bottom: 8px;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
-  color: #000000;
+  margin-bottom: 8px;
   text-transform: uppercase;
 }
 
 .overview_modal{
-margin: 0;
-padding-bottom: 20px;
-  font-style: normal;
-font-weight: 500;
-font-size: 12px;
-line-height: 16px;
-
-width:100%;
-// text-align:justify;
-// text-transform: uppercase;
+margin-bottom: 20px;
+line-height: calc(20/12);
 }
 
 .buttons-modal{
@@ -166,24 +134,20 @@ width:100%;
   background: #FFFFFF;
   border: 1px solid #000000;
   border-radius: 100px;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
 }
+
 .button-watched{
   padding: 10px 12px;
-  margin: 0;
-
-// width: 125px;
 }
 
 .button-queue{
   padding: 10px 14px;
-  
-// width: 111px;
-margin: 0;
-margin-left: 2px;
-// padding: 0;
 }
 
-.button-watched:hover,.button-watched:focus,.button-queue:hover,.button-queue:focus{
+.button-modal:hover,.button-modal:focus{
   color:  #FFFFFF;
   background: #B92F2C;
   border: none;
@@ -201,155 +165,68 @@ margin-left: 2px;
 }
 
 
-@media only screen and (min-width: 768px) and (max-width: 1279px) {
+@media only screen and (min-width: 768px) {
   .modal {
   width: 704px;
   height: 550px;
-
-
   }
+
   .modal_content {
-display: flex;
+  display: flex;
   padding: 40px 72px 64px 36px;
-  // max-width: 100%;
-  // max-height: 100%;
-  // overflow-y: scroll
   }
-  .close {
-  top: 16px;
-  right: 16px;
-  }
+
   .modal_img {
   width: 264px;
   height: 374px;
-margin: 0;
-margin-right: 68px;
+  margin-right: 68px;
+  margin-bottom: 0;
 
   }
 
-  .main_text_modal {
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 23px;
-
-    padding-top: 0;
-    margin: 0;
-  }
-
-  .overview_modal{
-   
-    font-size: 12px;
-    line-height: 20px;
-
+  .buttons-modal {
+      gap: 8px;
     }
 
-    .button-watched{
-      
-      padding: 10px 16px;
-      font-size: 12px;
-      line-height: 14px;
-    
+  .button-watched{
+      padding: 12px 18px;
     }
     
-    .button-queue{
-     
-      padding: 10px 16px;
-      font-size: 12px;
-      line-height: 14px;
-  
+  .button-queue{
+      padding: 12px 18px;
     }
-    
-
-
-  
-  // .buttons {
-  //   display: flex;
-  //   flex-direction: row;
-  // // justify-content: center;
-  // align-items: center;
-  // }
- 
-
-
   }
 
 
-  @media only screen and (min-width: 1280px) and (max-width: 3000px) {
+  @media only screen and (min-width: 1280px){
+
     .modal {
     width: 806px;
     height: 558px;
-  
-  
     }
+
     .modal_content {
-  display: flex;
-    padding: 40px 12px;
-    // max-width: 100%;
-    // max-height: 100%;
-    // overflow-y: scroll
+      padding: 40px 12px;
     }
-    .close {
-    top: 16px;
-    right: 16px;
-    }
+    
     .modal_img {
     width: 375px;
     height: 478px;
-  margin: 0;
-  margin-right: 16px;
-  
+    margin-right: 16px;
     }
   
     .main_text_modal {
-
       font-size: 30px;
-line-height: 35px;
-  
-      padding-top: 0;
-      margin: 0;
+      line-height: calc(35/30);
     }
-  
-    .overview_modal{
-     
-      font-size: 12px;
-      line-height: 20px;
-  
-      }
-
-      // .buttons {
-  //   display: flex;
-  //   flex-direction: row;
-  // // justify-content: center;
-  // align-items: center;
-  // }
  
-      .button-watched{
-        height: 42px;
+    .button-watched{
         padding: 14px 32px;
-        font-size: 12px;
-        line-height: 14px;
       
       }
       
-      .button-queue{
-        height: 42px;
+    .button-queue{
         padding: 14px 24px;
-        font-size: 12px;
-        line-height: 14px;
-    
       }
-      
-  
-  
-    
-    // .buttons {
-    //   display: flex;
-    //   flex-direction: row;
-    // justify-content: center;
-    // align-items: center;
-    // }
-   
-  
-  
     }
   
