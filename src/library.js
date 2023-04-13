@@ -1,3 +1,4 @@
 import './js/libraryRendering';
 import './js/modalWindowRendering';
-import './js/libraryPagination'
+import './js/libraryPagination';
+import './js/footerModalRendering';
