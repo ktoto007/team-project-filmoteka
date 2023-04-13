@@ -74,7 +74,9 @@ function goBackOnePageLibrary() {
         page: queryPage,
         total_pages: Math.ceil(filmsAmount / 20)
     };
-        if (queryPage !== 1) {
+    if (queryPage < 1) {
+            return
+        } else {
             const filmsForPage = [...films].splice((pages.page * 10 + (pages.page - 2) * 10), 20);
         buildingPagination(pages);
         filmsForPage.map(item => {
