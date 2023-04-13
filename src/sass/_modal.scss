@@ -61,12 +61,15 @@
 }
 
 .modal_list {
-  color: #8C8C8C;
+  display: flex;
   flex-direction: column;
   list-style-type: none;
   padding: 0;
   gap: 8px;
   padding: 0px;
+
+  
+  color: #8C8C8C;
 }
 
 .modal_list--black {
@@ -131,6 +134,9 @@ line-height: calc(20/12);
   background: #FFFFFF;
   border: 1px solid #000000;
   border-radius: 100px;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
 }
 
 .button-watched{
@@ -141,7 +147,7 @@ line-height: calc(20/12);
   padding: 10px 14px;
 }
 
-.button-watched:hover,.button-watched:focus,.button-queue:hover,.button-queue:focus{
+.button-modal:hover,.button-modal:focus{
   color:  #FFFFFF;
   background: #B92F2C;
   border: none;
