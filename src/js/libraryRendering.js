@@ -28,4 +28,3 @@ function gettingMoviesFromQueue() {
   });
   refs.cardContainer.innerHTML = renderMarkupFilmsCard(arr.slice(0, 20));
 }
-refs.homeHeaderForm.addEventListener('submit', searchForMoviesByWord);
