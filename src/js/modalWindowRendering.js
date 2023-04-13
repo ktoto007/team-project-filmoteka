@@ -1,8 +1,12 @@
 import { apiService } from './filmsAPIServise';
+import { libraryLogic } from './workWithLocalStorage';
 
 //=================== Добавление обработчика события на кнопку "Открыть модальное окно"================
 let modal;
 let backdrop;
+let btnWatched;
+let btnQueue;
+let film;
 const cardsContainer = document.querySelector('.cards-container');
 cardsContainer.addEventListener('click', handleModalBtnClick);
 
@@ -11,8 +15,15 @@ function handleModalBtnClick(event) {
     const idFilm = event.target.closest('.films-list__link').getAttribute('id');
 
     apiService.getMoviesDetails(idFilm).then(movieData => {
+        film = movieData
       createModal(movieData);
       createBackdrop();
+
+      btnWatched = document.querySelector('.button-watched');
+      btnQueue = document.querySelector('.button-queue');
+  
+      btnWatched.addEventListener('click', openWatchedList);
+      btnQueue.addEventListener('click', addFilmToQueue);
     });
   }
 }
@@ -56,9 +67,9 @@ function createModal(movieData) {
         </div>
         <p class="about_modal_text">About</p>
         <p class="overview_modal">${movieData.overview}</p>
-        <div class="buttons">
-          <button class="button-watched" type="button">Add to Watched</button>
-          <button class="button-queue" type="button">Add to Queue</button>
+        <div class="buttons-modal">
+          <button class="button-modal button-watched" type="button">Add to Watched</button>
+          <button class="button-modal button-queue" type="button">Add to Queue</button>
         </div>
       </div>
       </div>
@@ -113,3 +124,35 @@ function closeModal() {
   modal.remove();
   backdrop.remove();
 }
+
+function openWatchedList(event) {
+    // console.log('виконую функцію watched');
+    btnQueue.setAttribute('disabled', '');
+
+    if (event.currentTarget.textContent === 'Add to Watched') {
+        event.currentTarget.textContent = 'Remove from Watched';
+        libraryLogic.addToLocalStorage(film, 'watched')
+        return
+    } else if(event.currentTarget.textContent === 'Remove from Watched') {
+        event.currentTarget.textContent = 'Add to Watched'
+        btnQueue.removeAttribute('disabled');
+        libraryLogic.removeFromLocalstorage(film, 'watched')
+    }
+
+  }
+
+function addFilmToQueue(event) {
+    // console.log('виконую функцію Queue')
+    btnWatched.setAttribute('disabled', '');
+    
+    if (event.currentTarget.textContent === 'Add to Queue') {
+        event.currentTarget.textContent = 'Remove from Queue';
+        libraryLogic.addToLocalStorage(film, 'queue')
+        return
+    } else if(event.currentTarget.textContent === 'Remove from Queue') {
+        event.currentTarget.textContent = 'Add to Queue'
+        btnWatched.removeAttribute('disabled', '');
+        libraryLogic.removeFromLocalstorage(film, 'Queue')
+    }
+    
+  }
