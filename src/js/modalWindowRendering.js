@@ -64,27 +64,27 @@ function createModal(movieData) {
         <div class="tablet_modal">
         <h2 class="main_text_modal">${movieData.title}</h2>
         <div class="modal_items_container">
-          <ul class="modal_list">
+          <ul class="modal_list modal-text">
             <li>Vote / Votes</li>
             <li>Popularity</li>
             <li>Original Title</li>
             <li>Genre</li>
           </ul>
-          <ul class="modal_list_value">
+          <ul class="modal_list modal_list--black modal-text">
             <li>
-              <span class="vote_span">${movieData.vote_average.toFixed(
+              <span class="modal-item__info vote_span">${movieData.vote_average.toFixed(
                 1
               )}</span>
               <span class="delimiter"> / </span>
-              <span class="vote_count_span">${movieData.vote_count}</span>
+              <span class="modal-item__info vote_count_span">${movieData.vote_count}</span>
             </li>
             <li>${movieData.popularity.toFixed(1)}</li>
             <li>${movieData.title}</li>
             <li>${movieData.genres[0].name}</li>
           </ul>
         </div>
-        <p class="about_modal_text">About</p>
-        <p class="overview_modal">${movieData.overview}</p>
+        <p class="about_modal_text modal-text">About</p>
+        <p class="overview_modal modal-text">${movieData.overview}</p>
         <div class="buttons-modal">
           <button class="button-modal button-watched" type="button">Add to Watched</button>
           <button class="button-modal button-queue" type="button">Add to Queue</button>
