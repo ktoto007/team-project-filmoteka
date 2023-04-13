@@ -21,7 +21,7 @@ const modalWindowMarkup = `
        <div class="box box-list"></div>
        <button class="gallery-arrow right fa-solid fa-arrow-right button-queue"></button>
     </div>
-    <button type="button" class="footer-modal_button button-watched" data-action="close-footer-modal">
+    <button type="button" class="footer-modal_button button-modal button-watched" data-action="close-footer-modal">
       Close
     </button>
   </div>
@@ -29,20 +29,31 @@ const modalWindowMarkup = `
 `
 
 const renderModalWindow = () => {
-    const backdrop = document.createElement('div');
-    backdrop.setAttribute('class', 'modal-backdrop');
-    backdrop.innerHTML = modalWindowMarkup;
-    document.body.append(backdrop);
-    return backdrop;
+  const backdrop = document.createElement('div');
+  backdrop.setAttribute('class', 'modal-backdrop');
+  backdrop.innerHTML = modalWindowMarkup;
+  document.body.append(backdrop);
+  return backdrop;
 };
 
 const onOpenModalBtnClick = () => {
-    const backdrop = renderModalWindow();
-    sliderComponate(state, '');
-    const btnModalClose = document.querySelector('.footer-modal_button');
-    const removeModalWindow = () => backdrop.remove();
-    const onCloseModalBtnClick = () => removeModalWindow();
-    btnModalClose.addEventListener('click', onCloseModalBtnClick);
+  const backdrop = renderModalWindow();
+  sliderComponate(state, '');
+  const btnModalClose = document.querySelector('.footer-modal_button');
+  const removeModalWindow = () => backdrop.remove();
+  const onCloseModalBtnClick = () => removeModalWindow();
+  btnModalClose.addEventListener('click', onCloseModalBtnClick);
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      removeModalWindow();
+    }
+  });
+
+  backdrop.addEventListener('click', (event) => {
+    if (event.target === backdrop)
+      removeModalWindow()
+  });
 }
 
 btnModalOpen.addEventListener('click', onOpenModalBtnClick);
