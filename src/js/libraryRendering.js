@@ -15,7 +15,7 @@ function gettingMoviesFromWatched() {
     const keys = item.genres.map(item => Object.values(item)[0]);
     item.genre_ids = keys;
   });
-  refs.cardContainer.innerHTML = renderMarkupFilmsCard(arr);
+  refs.cardContainer.innerHTML = renderMarkupFilmsCard(arr.slice(0, 20));
 }
 
 function gettingMoviesFromQueue() {
@@ -26,5 +26,5 @@ function gettingMoviesFromQueue() {
     const keys = item.genres.map(item => Object.values(item)[0]);
     item.genre_ids = keys;
   });
-  refs.cardContainer.innerHTML = renderMarkupFilmsCard(arr);
+  refs.cardContainer.innerHTML = renderMarkupFilmsCard(arr.slice(0, 20));
 }
