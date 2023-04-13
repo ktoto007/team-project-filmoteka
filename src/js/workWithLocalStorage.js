@@ -36,7 +36,7 @@ class LibraryLogic {
 }
 
   removeFromLocalstorage(film, type) {
-    if (type == 'Queue') {
+    if (type === 'Queue') {
       const queueMovies = JSON.parse(localStorage.getItem('queue'));
       if (queueMovies.find(queueMovie => queueMovie.id === film.id)) {
         localStorage.setItem(

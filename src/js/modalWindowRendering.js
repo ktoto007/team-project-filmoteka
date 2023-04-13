@@ -15,15 +15,33 @@ function handleModalBtnClick(event) {
     const idFilm = event.target.closest('.films-list__link').getAttribute('id');
 
     apiService.getMoviesDetails(idFilm).then(movieData => {
-        film = movieData
+      film = movieData;
       createModal(movieData);
       createBackdrop();
 
       btnWatched = document.querySelector('.button-watched');
       btnQueue = document.querySelector('.button-queue');
-  
-      btnWatched.addEventListener('click', openWatchedList);
-      btnQueue.addEventListener('click', addFilmToQueue);
+
+      moviesListWatched = JSON.parse(localStorage.getItem('watched'));
+      moviesListQueue = JSON.parse(localStorage.getItem('queue'));
+
+      if(moviesListWatched){
+          const listWatched = moviesListWatched.find(movie => movie.id === film.id);
+          if(listWatched) {
+            btnWatched.textContent = 'Remove from Watched';
+          }
+          
+      } 
+      
+      if(moviesListQueue){
+        const listQueue = moviesListQueue.find(queueMovie => queueMovie.id === film.id);
+        if(listQueue) {
+          btnQueue.textContent = 'Remove from Queue';
+        }
+      } 
+      
+        btnWatched.addEventListener('click', addFilmToListWatched);
+        btnQueue.addEventListener('click', addFilmToListQueue);
     });
   }
 }
@@ -125,34 +143,28 @@ function closeModal() {
   backdrop.remove();
 }
 
-function openWatchedList(event) {
-    // console.log('виконую функцію watched');
-    btnQueue.setAttribute('disabled', '');
-
+function  addFilmToListWatched(event) {
     if (event.currentTarget.textContent === 'Add to Watched') {
+      btnQueue.setAttribute('disabled', '');
         event.currentTarget.textContent = 'Remove from Watched';
         libraryLogic.addToLocalStorage(film, 'watched')
-        return
     } else if(event.currentTarget.textContent === 'Remove from Watched') {
         event.currentTarget.textContent = 'Add to Watched'
-        btnQueue.removeAttribute('disabled');
+        btnQueue.removeAttribute('disabled', '');
         libraryLogic.removeFromLocalstorage(film, 'watched')
     }
 
   }
 
-function addFilmToQueue(event) {
-    // console.log('виконую функцію Queue')
-    btnWatched.setAttribute('disabled', '');
-    
+function addFilmToListQueue(event) {
     if (event.currentTarget.textContent === 'Add to Queue') {
+        btnWatched.setAttribute('disabled', '');
         event.currentTarget.textContent = 'Remove from Queue';
         libraryLogic.addToLocalStorage(film, 'queue')
-        return
     } else if(event.currentTarget.textContent === 'Remove from Queue') {
         event.currentTarget.textContent = 'Add to Queue'
         btnWatched.removeAttribute('disabled', '');
-        libraryLogic.removeFromLocalstorage(film, 'Queue')
+        libraryLogic.removeFromLocalstorage(film, 'queue')
     }
     
   }
