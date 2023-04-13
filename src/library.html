@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
@@ -77,10 +77,88 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- ❗️❗️❗️ Add partials like so for every page -->
-    <include src="./partials/cardHolder.html"></include>
+    <!-- <include src="./partials/cardHolder.html"></include>
+    <include src="./partials/footer.html"></include>
+
+    <script type="module" src="./library.js"></script>
+  </body>
+</html> -->
+
+<!-- =========================================================================== -->
+
+
+<!-- <header class="header">
+  <div class="library__container container">
+    <div class="library__buttons">
+      <ul class="library__btn-position">
+        <li><a class="library__btn btn-home" href="#">Home</a></li>
+        <li>
+          <a class="btn-mylibrary library__btn" href="#">My Library</a>
+        </li>
+      </ul>
+      <ul class="library__btn-position">
+        <li>
+          <a class="library__btn btn-watched isActiveBtn" href="#">Watched</a>
+        </li>
+        <li><a class="library__btn btn-queue" href="#">Queue</a></li>
+      </ul>
+    </div>
+    <a href="index.html" class="library__logo">
+      <svg class="header__logo-svg">
+        <use href="./img/icons.svg#icon-film-1"></use>
+      </svg>
+      <p class="library__title">Filmoteka</p>
+    </a>
+  </div>
+</header> -->
+
+
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filmoteka</title>
+
+    <link rel="shortcut icon" href="./img/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./sass/index.scss" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="library__container container">
+        <div class="library__buttons">
+          <ul class="library__btn-position">
+            <li><a class="library__btn btn-home" href="./index.html">Home</a></li>
+            <li>
+              <a class="btn-mylibrary library__btn" href="./library.html">My Library</a>
+            </li>
+          </ul>
+          <ul class="library__btn-position">
+            <li>
+              <button class="library__btn header__btn-watched" type="button">Watched</button>
+            </li>
+            <li><button class="library__btn header__btn-queue" type="button">Queue</button></li>
+          </ul>
+        </div>
+        <a href="index.html" class="library__logo">
+          <svg class="header__logo-svg" width="24" height="24">
+            <use href="./img/icons.svg#icon-film-1"></use>
+          </svg>
+          <p class="library__title">Filmoteka</p>
+        </a>
+      </div>
+    </header>
+
+<!-- ❗️❗️❗️ Add partials like so for every page -->
+<include src="./partials/cardHolder.html"></include>
     <include src="./partials/footer.html"></include>
 
     <script type="module" src="./library.js"></script>
