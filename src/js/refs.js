@@ -1,7 +1,7 @@
 const refs = {
   homeHeaderForm: document.querySelector('.header__form'),
   cardContainer: document.querySelector('.cards-container'),
-  conbuttonBack: document.querySelector('.button-back'),
+  buttonBack: document.querySelector('.button-back'),
   buttonForward: document.querySelector('.button-forward'),
   buttonsPagesList: document.querySelector('.buttons-pages'),
   buttonQueue: document.querySelector('.header__btn-queue'),

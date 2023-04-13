@@ -5,12 +5,12 @@ export let lastPage = null;
 export function buildingPagination({ page, total_pages: totalPages }) {
    const screenWidth = window.screen.width;
     lastPage = totalPages;
-    
+
 // Пагінація для Mobile
     if (screenWidth < 768) {
       if (totalPages < 5) {
             const buttonsPages = [];
-            for (i = 1; i <= totalPages; i += 1) {
+            for (let i = 1; i <= totalPages; i += 1) {
                 buttonsPages.push(`<li><button class="button-pagination button-page" type="button" id="page-${i}">${i}</button></li>`)
             }
           refs.buttonsPagesList.innerHTML = `${buttonsPages.join('')}`;
@@ -58,7 +58,7 @@ export function buildingPagination({ page, total_pages: totalPages }) {
     // Пагінація для Tablet, Desktop
   if (totalPages < 10) {
             const buttonsPages = [];
-            for (i = 1; i <= totalPages; i += 1) {
+            for (let i = 1; i <= totalPages; i += 1) {
                 buttonsPages.push(`<li><button class="button-pagination button-page" type="button" id="page-${i}">${i}</button></li>`)
             }
           refs.buttonsPagesList.innerHTML = `${buttonsPages.join('')}`;
