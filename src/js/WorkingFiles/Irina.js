@@ -33,4 +33,40 @@ async function getMovieTrailer(id) {
     console.error('Error:', error);
   }
 } 
-  
+ ///////////////////////////////////////////////////////////////////////////////////
+
+//выводим из локал//
+
+function getFromStorage(key) {
+  try {
+    const movieStorage = localStorage.getItem(key);
+    if (movieStorage === null) {
+      return [];
+    } else {
+      return JSON.parse(movieStorage);
+    }
+  } catch (error) {
+    console.log(`Error`);
+    return [];
+  }
+}
+
+console.log(getFromStorage('data'));// проверяем в консоли//
+
+
+// добавляем в локал//
+
+// function saveToStorage(key, value) {
+//   try {
+//     if (value === null) {
+//       localStorage.removeItem(key);
+//     } else {
+//       const movieStorage = JSON.stringify(value);
+//       localStorage.setItem(key, movieStorage);
+//     }
+//   } catch (error) { 
+//     console.log(`Error`);
+//   }
+// }
+// saveToStorage('data', [1, 2, 3]);// проверяем в консоли//
+// console.log('Data save');

@@ -7,7 +7,19 @@ export function buildingPagination({ page, total_pages: totalPages }) {
     lastPage = totalPages;
     
 // Пагінація для Mobile
-  if (screenWidth < 768) {
+    if (screenWidth < 768) {
+      if (totalPages < 5) {
+            const buttonsPages = [];
+            for (i = 1; i <= totalPages; i += 1) {
+                buttonsPages.push(`<li><button class="button-pagination button-page" type="button" id="page-${i}">${i}</button></li>`)
+            }
+          refs.buttonsPagesList.innerHTML = `${buttonsPages.join('')}`;
+            
+          const currentPage = document.querySelector(`#page-${page}`);
+            currentPage.classList.add('current-page')
+            return
+        }
+
     if (page < 4) {
       refs.buttonsPagesList.innerHTML = `<li><button class="button-pagination button-page" type="button" id="page-1">1</button></li>
     <li><button class="button-pagination button-page" type="button" id="page-2">2</button></li>
@@ -44,7 +56,19 @@ export function buildingPagination({ page, total_pages: totalPages }) {
   }
 
     // Пагінація для Tablet, Desktop
-  if (page < 5) {
+  if (totalPages < 10) {
+            const buttonsPages = [];
+            for (i = 1; i <= totalPages; i += 1) {
+                buttonsPages.push(`<li><button class="button-pagination button-page" type="button" id="page-${i}">${i}</button></li>`)
+            }
+          refs.buttonsPagesList.innerHTML = `${buttonsPages.join('')}`;
+            
+        const currentPage = document.querySelector(`#page-${page}`);
+            currentPage.classList.add('current-page')
+            return
+        }
+  
+    if (page < 5) {
     refs.buttonsPagesList.innerHTML = `<li><button class="button-pagination button-page" type="button" id="page-1">1</button></li>
     <li><button class="button-pagination button-page" type="button" id="page-2">2</button></li>
     <li><button class="button-pagination button-page" type="button" id="page-3">3</button></li>
