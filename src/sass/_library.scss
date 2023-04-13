@@ -1,81 +1,349 @@
-.header__list {
-  display: flex;
-}
+// .header__list {
+//   display: flex;
+// }
 
-.header__btn-top {
-  @media screen and (max-width: 768px) {
-    display: none;
-  }
-  margin-left: auto;
-}
+// .header__btn-top {
+//   @media screen and (max-width: 768px) {
+//     display: none;
+//   }
+//   margin-left: auto;
+// }
 
-.header__btn-bottom {
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
+// .header__btn-bottom {
+//   display: flex;
+//   flex-direction: column-reverse;
+//   align-items: center;
 
-  @media screen and (min-width: 768px) {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: flex-end;
-    padding-bottom: 0;
-  }
-}
-.header__btn {
-  margin-top: 16px;
+//   @media screen and (min-width: 768px) {
+//     display: flex;
+//     flex-direction: row-reverse;
+//     justify-content: flex-end;
+//     padding-bottom: 0;
+//   }
+// }
+// .header__btn {
+//   margin-top: 16px;
 
-  @media screen and (min-width: 768px) {
-    display: flex;
-    margin-top: 0;
-    display: none;
-  }
-}
-.header__btn-watched {
-  padding: 10px 23px;
-  width: 102px;
-  height: 34px;
+//   @media screen and (min-width: 768px) {
+//     display: flex;
+//     margin-top: 0;
+//     display: none;
+//   }
+// }
+// .header__btn-watched {
+//   padding: 10px 23px;
+//   width: 102px;
+//   height: 34px;
+//   border-radius: 100px;
+
+//   font-weight: 500;
+//   font-size: 12px;
+//   line-height: calc(14 / 12);
+//   text-transform: uppercase;
+//   cursor: pointer;
+//   color: #b92f2c;
+//   background: #ffffff;
+
+//   @media screen and (min-width: 768px) {
+//     height: 38px;
+//     padding: 12px 23px;
+//   }
+//   @media screen and (min-width: 1280px) {
+//     margin-right: 8px;
+//     width: 120px;
+//     height: 42px;
+//     padding: 14px 32px;
+//   }
+// }
+// .header__btn-queue {
+//   padding: 10px 24px;
+//   width: 86px;
+//   height: 34px;
+//   border-radius: 100px;
+
+//   font-weight: 500;
+//   font-size: 12px;
+//   line-height: calc(14 / 12);
+//   text-transform: uppercase;
+//   cursor: pointer;
+//   color: #b92f2c;
+//   background: #ffffff;
+
+//   @media screen and (min-width: 768px) {
+//     padding: 12px 24px;
+//     height: 38px;
+//   }
+//   @media screen and (min-width: 1280px) {
+//     height: 42px;
+//     padding: 14px 24px;
+//   }
+// }
+
+// .this {
+//   color: #ffffff;
+//   background-color: #000000;
+// }
+
+// .this-library {
+//   color: #ffffff;
+//   background-color: #b92f2c;
+// }
+
+// ===============================================================
+
+
+/* common styles for links */
+.library__btn {
+  display: inline-block;
+  text-transform: uppercase;
+
   border-radius: 100px;
+  color: #ffffff;
+  background-color: #000000;
 
-  font-weight: 500;
+  font-family: "Roboto", sans-serif;
   font-size: 12px;
   line-height: calc(14 / 12);
-  text-transform: uppercase;
-  cursor: pointer;
-  color: #b92f2c;
-  background: #ffffff;
+}
 
-  @media screen and (min-width: 768px) {
-    height: 38px;
-    padding: 12px 23px;
+.btn-home {
+  padding: 10px 26px;
+  background-color: #ffffff;
+  color: #000000;
+
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    padding: 12px 24px;
   }
+
   @media screen and (min-width: 1280px) {
-    margin-right: 8px;
-    width: 120px;
-    height: 42px;
     padding: 14px 32px;
   }
 }
-.header__btn-queue {
-  padding: 10px 24px;
-  width: 86px;
-  height: 34px;
-  border-radius: 100px;
 
-  font-weight: 500;
-  font-size: 12px;
-  line-height: calc(14 / 12);
-  text-transform: uppercase;
-  cursor: pointer;
+.btn-mylibrary {
+  padding: 10px 22px;
+
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    padding: 12px 20px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    padding: 14px 24px;
+  }
+}
+
+.header__btn-watched {
+  padding: 10px 23px;
   color: #b92f2c;
   background: #ffffff;
 
-  @media screen and (min-width: 768px) {
-    padding: 12px 24px;
-    height: 38px;
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    padding: 12px 23px;
   }
+
   @media screen and (min-width: 1280px) {
-    height: 42px;
+    padding: 14px 32px;
+  }
+}
+
+.header__btn-queue {
+  padding: 10px 24px;
+  color: #b92f2c;
+  background: #ffffff;
+
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    padding: 12px 24px;
+  }
+
+  @media screen and (min-width: 1280px) {
     padding: 14px 24px;
+  }
+}
+
+.header {
+  padding-top: 20px;
+}
+
+.library__container {
+  padding: 14px 14px 20px 14px;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      max-width: 280px;
+      border-radius: 10px;
+      min-height: 460px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      text-decoration: none;
+  
+      background-image: linear-gradient(to right,
+          rgba(0, 0, 0, 0.4),
+          rgba(0, 0, 0, 0.4)),
+        url(../img/background-mob.jpg);
+  
+      @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+        background-image: linear-gradient(to right,
+            rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.4)),
+          url(../img/background-mob\ @2x.jpg);
+      }
+  
+      @media (min-device-pixel-ratio: 3),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+        background-image: linear-gradient(to right,
+            rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.4)),
+          url(../img/background-mob@3x.jpg);
+      }
+  
+      @media screen and (min-width: 768px) {
+        min-width: 704px;
+        min-height: 222px;
+        padding: 16px;
+        border-radius: 15px;
+  
+        background-image: linear-gradient(to right,
+            rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.4)),
+          url(../img/background-tab1x.jpg);
+  
+        @media (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+          background-image: linear-gradient(to right,
+              rgba(0, 0, 0, 0.4),
+              rgba(0, 0, 0, 0.4)),
+            url(../img/background-tab2x.jpg);
+        }
+  
+        @media (min-device-pixel-ratio: 3),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+          background-image: linear-gradient(to right,
+              rgba(0, 0, 0, 0.4),
+              rgba(0, 0, 0, 0.4)),
+            url(../img/background-tab3x.jpg);
+        }
+      }
+  
+  
+      @media screen and (min-width: 1280px) {
+        min-width: 1216px;
+        min-height: 316px;
+        padding: 16px 32px 32px 32px;
+        border-radius: 15px;
+        background-image: linear-gradient(to right,
+            rgba(0, 0, 0, 0.49),
+            rgba(0, 0, 0, 0.49)),
+          url(../img/images-background.jpg);
+  
+        @media (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+          background-image: linear-gradient(to right,
+              rgba(0, 0, 0, 0.49),
+              rgba(0, 0, 0, 0.49)),
+            url(../img/background-desk@2x.jpg);
+        }
+  
+        @media (min-device-pixel-ratio: 3),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+          background-image: linear-gradient(to right,
+              rgba(0, 0, 0, 0.49),
+              rgba(0, 0, 0, 0.49)),
+            url(../img/background-desk@3x.jpg);
+        }
+  
+      }
+}
+
+.library__buttons {
+  display: contents;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.library__btn-position {
+  list-style-type: none;
+  display: flex;
+  gap: 4px;
+
+  @media screen and (min-width: 1280px) {
+    gap: 8px;
+  }
+}
+
+.library__btn-position:last-child {
+  padding: 0 44px;
+}
+
+.library__btn-position:last-child {
+  padding: 0 30px;
+
+  @media screen and (min-width: 768px) {
+    padding: 0;
+  }
+}
+
+.library__logo {
+  display: flex;
+  align-items: center;
+  top: 348px;
+  left: 48px;
+
+  @media screen and (min-width: 768px) {
+    top: 168px;
+    left: 16px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    top: 209px;
+    left: 32px;
+  }
+}
+
+.library__title {
+  color: #fff;
+  font-size: 32px;
+  line-height: calc(38 / 32);
+  margin-left: 8px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 40px;
+    line-height: calc(47 / 40);
+  }
+
+  @media screen and (min-width: 1280px) {
+    font-size: 64px;
+    line-height: calc(75 / 64);
+  }
+}
+
+.library_logo-svg {
+  width: 32px;
+  height: 32px;
+  stroke-width: 0;
+  stroke: #fff;
+  fill: rgba(0, 0, 0, 0);
+  display: inline-block;
+
+  @media screen and (min-width: 768px) {
+    width: 40px;
+    height: 40px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 59px;
+    height: 59px;
   }
 }
 
