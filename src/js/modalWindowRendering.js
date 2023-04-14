@@ -1,5 +1,7 @@
 import { apiService } from './filmsAPIServise';
 import { libraryLogic } from './workWithLocalStorage';
+// import { gettingMoviesFromWatched, gettingMoviesFromQueue } from './libraryRendering';
+import { refs } from './refs';
 
 //=================== Добавление обработчика события на кнопку "Открыть модальное окно"================
 let modal;
@@ -21,7 +23,6 @@ function handleModalBtnClick(event) {
       film = movieData;
       createModal(movieData);
       createBackdrop();
-
 
       btnWatched = document.querySelector('.button-watched');
       btnQueue = document.querySelector('.button-queue');
@@ -75,13 +76,13 @@ function createModal(movieData) {
         <h2 class="main_text_modal">${movieData.title}</h2>
         <div class="modal_items_container">
           <ul class="modal_list modal-text">
-            <li class="modal-list__item">Vote / Votes</li>
-            <li class="modal-list__item">Popularity</li>
-            <li class="modal-list__item">Original Title</li>
-            <li class="modal-list__item">Genre</li>
+            <li>Vote / Votes</li>
+            <li>Popularity</li>
+            <li>Original Title</li>
+            <li>Genre</li>
           </ul>
           <ul class="modal_list modal_list--black modal-text">
-            <li class="modal-list__item">
+            <li>
               <span class="modal-item__info vote_span">${movieData.vote_average.toFixed(
                 1
               )}</span>
@@ -90,9 +91,9 @@ function createModal(movieData) {
                 movieData.vote_count
               }</span>
             </li>
-            <li class="modal-list__item">${movieData.popularity.toFixed(1)}</li>
-            <li class="modal-list__item">${movieData.title}</li>
-            <li class="modal-list__item">${movieData.genres[0].name}</li>
+            <li>${movieData.popularity.toFixed(1)}</li>
+            <li>${movieData.title}</li>
+            <li>${movieData.genres[0].name}</li>
           </ul>
         </div>
         <p class="about_modal_text modal-text">About</p>
@@ -154,6 +155,47 @@ function closeModal() {
   modal.remove();
   backdrop.remove();
   body.classList.remove('disabled-scroll');
+
+  if(refs.header.classList.contains('header-library')){
+    gettingMoviesFromWatched();
+    gettingMoviesFromQueue();
+  }
+  
+}
+
+function gettingMoviesFromWatched() {
+  const arr = libraryLogic.getFromStorage('watched');
+  refs.buttonWatched.classList.add('this-library');
+  refs.buttonQueue.classList.remove('this-library');
+  if (arr.length == 0) {
+    refs.cardContainer.innerHTML =
+      "<li class='clear-storage-text'><p>Sorry, but you haven't added any movies to this category yet</p></li>";
+    return;
+  }
+
+  arr.map(item => {
+    const keys = item.genres.map(item => Object.values(item)[0]);
+    item.genre_ids = keys;
+  });
+  refs.cardContainer.innerHTML = renderMarkupFilmsCard(arr.slice(0, 20));
+}
+
+function gettingMoviesFromQueue() {
+  const arr = libraryLogic.getFromStorage('queue');
+  refs.buttonQueue.classList.add('this-library');
+  refs.buttonWatched.classList.remove('this-library');
+  if (arr.length == 0) {
+    refs.cardContainer.innerHTML =
+      "<li class='clear-storage-text'><p>Sorry, but you haven't added any movies to this category yet</p></li>";
+    return;
+  }
+  refs.buttonQueue.classList.add('this-library');
+  refs.buttonWatched.classList.remove('this-library');
+  arr.map(item => {
+    const keys = item.genres.map(item => Object.values(item)[0]);
+    item.genre_ids = keys;
+  });
+  refs.cardContainer.innerHTML = renderMarkupFilmsCard(arr.slice(0, 20));
 }
 
 function addFilmToListWatched(event) {
