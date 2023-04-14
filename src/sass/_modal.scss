@@ -32,7 +32,7 @@
 }
 
 .modal_img {
-  width: 240px;
+  min-width: 240px;
   margin-bottom: 20px;
   border-radius: 5px;
 }
@@ -177,7 +177,7 @@ line-height: calc(20/12);
   }
 
   .modal_img {
-  width: 264px;
+  min-width: 264px;
   height: 374px;
   margin-right: 68px;
   margin-bottom: 0;
@@ -210,7 +210,7 @@ line-height: calc(20/12);
     }
     
     .modal_img {
-    width: 375px;
+    min-width: 375px;
     height: 478px;
     margin-right: 16px;
     }
