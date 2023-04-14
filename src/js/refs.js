@@ -8,6 +8,7 @@ const refs = {
   buttonWatched: document.querySelector('.header__btn-watched'),
   buttonToTop: document.querySelector('.button-top'),
   header: document.querySelector('.header'),
+  paragrafAboutResult: document.querySelector('search-correct'),
 };
 
 export { refs };
