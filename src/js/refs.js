@@ -6,7 +6,8 @@ const refs = {
   buttonsPagesList: document.querySelector('.buttons-pages'),
   buttonQueue: document.querySelector('.header__btn-queue'),
   buttonWatched: document.querySelector('.header__btn-watched'),
-  buttonToTop: document.querySelector('.button-top')
+  buttonToTop: document.querySelector('.button-top'),
+  header: document.querySelector('.header'),
 };
 
 export { refs };
