@@ -10,7 +10,7 @@
 
 .modal {
   width: 280px;
-  max-height: 930;
+  max-height: 100%;
   background-color: #fff;
   transition: all .5s;
   position: fixed;
@@ -166,9 +166,6 @@ line-height: calc(20/12);
 @media only screen and (min-width: 768px) {
   .modal {
   width: 704px;
-  max-height: 552px;
-  }
-
   .modal_content {
   display: flex;
   padding: 40px 72px 64px 36px;
@@ -200,9 +197,6 @@ line-height: calc(20/12);
 
     .modal {
     width: 806px;
-    max-height: 558px;
-    }
-
     .modal_content {
       padding: 40px 12px;
       gap: 16px;
