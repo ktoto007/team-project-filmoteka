@@ -1,6 +1,7 @@
 import { libraryLogic } from './workWithLocalStorage';
 import { refs } from './refs';
 import renderMarkupFilmsCard from './renderMarkupFilmsCard';
+import {renderingPaginationForFirstPageQueue, renderingPaginationForFirstPageWatched} from './libraryPagination';
 document.addEventListener('DOMContentLoaded', gettingMoviesFromWatched);
 
 refs.buttonWatched.addEventListener('click', gettingMoviesFromWatched);
@@ -20,6 +21,7 @@ function gettingMoviesFromWatched() {
     item.genre_ids = keys;
   });
   refs.cardContainer.innerHTML = renderMarkupFilmsCard(arr.slice(0, 20));
+  renderingPaginationForFirstPageWatched();
 }
 
 refs.buttonQueue.addEventListener('click', gettingMoviesFromQueue);
@@ -39,4 +41,5 @@ function gettingMoviesFromQueue() {
     item.genre_ids = keys;
   });
   refs.cardContainer.innerHTML = renderMarkupFilmsCard(arr.slice(0, 20));
+     renderingPaginationForFirstPageQueue();
 }

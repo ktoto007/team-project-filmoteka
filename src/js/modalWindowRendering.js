@@ -34,7 +34,6 @@ function handleModalBtnClick(event) {
         );
         if (listWatched) {
           btnWatched.textContent = 'Remove from Watched';
-          btnQueue.setAttribute('disabled', '');
         }
       }
 
@@ -44,7 +43,6 @@ function handleModalBtnClick(event) {
         );
         if (listQueue) {
           btnQueue.textContent = 'Remove from Queue';
-          btnWatched.setAttribute('disabled', '');
         }
       }
 
@@ -152,7 +150,7 @@ function createBackdrop() {
 function closeModal() {
   modal.remove();
   backdrop.remove();
-  body.classList.remove('disabled-scroll');
+  body.classList.remove('disabled-scroll')
 }
 
 function addFilmToListWatched(event) {

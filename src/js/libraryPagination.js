@@ -3,21 +3,9 @@ import { lastPage, buildingPagination } from './renderingPagination';
 import { libraryLogic } from './workWithLocalStorage';
 import { refs } from './refs';
 
-function renderingPaginationForFirstPage() {
-        const filmsWatched = libraryLogic.getFromStorage('watched');
-        const filmsAmount = filmsWatched.length;
-        libraryLogic.totalPages = Math.ceil(filmsAmount / 20);
-        
-        if (filmsAmount === 0) {
-            return 
-    }
-        buildingPagination(libraryLogic.pages)
-    
-        }
-
-renderingPaginationForFirstPage();
-
-refs.buttonsPagesList.addEventListener('click', renderingLibraryByPageNumber)
+refs.buttonsPagesList.addEventListener('click', renderingLibraryByPageNumber);
+refs.buttonBack.addEventListener('click', goBackOnePageLibrary);
+refs.buttonForward.addEventListener('click', goForwardOnePageLibrary);
 
 function renderingLibraryByPageNumber(evt) {
     if (evt.target.type !== 'button') {
@@ -50,11 +38,6 @@ function renderingLibraryByPageNumber(evt) {
         window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     }
 }
-
-// Слухач на кнопку назад
-refs.buttonBack.addEventListener('click', goBackOnePageLibrary);
-// Слухач на клік по кнопці вперед
-refs.buttonForward.addEventListener('click', goForwardOnePageLibrary);
 
 function goBackOnePageLibrary() {
     if (libraryLogic.currentPage === 1) {
@@ -98,3 +81,29 @@ function goForwardOnePageLibrary() {
     refs.cardContainer.innerHTML = renderMarkupFilmsCard(filmsForOnePage);
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 }
+
+export function renderingPaginationForFirstPageWatched() {
+        const filmsWatched = libraryLogic.getFromStorage('watched');
+        const filmsAmount = filmsWatched.length;
+        libraryLogic.currentPage = 1;
+        libraryLogic.totalPages = Math.ceil(filmsAmount / 20);
+        
+        if (filmsAmount === 0) {
+            return 
+    }
+        buildingPagination(libraryLogic.pages)
+    
+        }
+
+export function renderingPaginationForFirstPageQueue() {
+        const filmsWatched = libraryLogic.getFromStorage('queue');
+    const filmsAmount = filmsWatched.length;
+    libraryLogic.currentPage = 1;
+        libraryLogic.totalPages = Math.ceil(filmsAmount / 20);
+        
+        if (filmsAmount === 0) {
+            return 
+    }
+        buildingPagination(libraryLogic.pages)
+    
+        }

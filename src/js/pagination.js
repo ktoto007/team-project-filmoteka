@@ -4,11 +4,8 @@ import renderMarkupFilmsCard from './renderMarkupFilmsCard';
 import { loader } from './loader';
 import {lastPage, buildingPagination } from './renderingPagination';
 
-// Слухач на клік по кнопці з номером сторінки
 refs.buttonsPagesList.addEventListener('click', renderingFilmsByPageNumber);
-// Слухач на клік по кнопці назад
 refs.buttonBack.addEventListener('click', goBackOnePage);
-// Слухач на клік по кнопці вперед
 refs.buttonForward.addEventListener('click', goForwardOnePage);
 
 function renderingFilmsByPageNumber(evt) {
