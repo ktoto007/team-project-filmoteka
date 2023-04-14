@@ -4,7 +4,8 @@ a {
   
   .films-list__item {
     width: 280px;
-  
+    transition: transform 0.3s ease-in-out;
+    
     @media screen and (min-width: 768px) {
       width: 336px;
     }
@@ -13,13 +14,22 @@ a {
       width: 395px;
     }
     
-  };
+  }
+
+  .films-list__item:hover, .films-list__item:focus {
+    transform: scale(1.02);
+  }
+
+  .films-list__link {
+    border-radius: 5px;
+  }
   
   .films-list-item__poster {
     width: 280px;
     height: 400px;
   
     margin-bottom: 10px;
+    border-radius: 5px;
   
     @media screen and (min-width: 768px) {
       width: 336px;

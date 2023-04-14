@@ -1,5 +1,16 @@
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
 .modal {
   width: 280px;
+  max-height: 930;
   background-color: #fff;
   transition: all .5s;
   position: fixed;
@@ -11,6 +22,7 @@
 }
 
 .modal_content {
+  
   position: relative;
   padding: 48px 20px 40px 20px;
 }
@@ -48,8 +60,7 @@
 
 .modal_items_container {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  gap: 39px;
   margin-bottom: 20px;
 }
 
@@ -61,15 +72,14 @@
 }
 
 .modal_list {
-  display: flex;
-  flex-direction: column;
   list-style-type: none;
   padding: 0;
-  gap: 8px;
-  padding: 0px;
 
-  
   color: #8C8C8C;
+}
+
+.modal-list__item:not(:last-child) {
+  margin-bottom: 8px;
 }
 
 .modal_list--black {
@@ -153,36 +163,24 @@ line-height: calc(20/12);
   border: none;
 }
 
-
-.modal-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-
-
 @media only screen and (min-width: 768px) {
   .modal {
   width: 704px;
-  height: 550px;
+  max-height: 552px;
   }
 
   .modal_content {
   display: flex;
   padding: 40px 72px 64px 36px;
+  gap: 68px;
   }
 
   .modal_img {
-  min-width: 264px;
-  height: 374px;
-  margin-right: 68px;
-  margin-bottom: 0;
-
+    min-width: 264px;
+    height: 374px;
+    margin-bottom: 0;
   }
+
 
   .buttons-modal {
       gap: 8px;
@@ -202,17 +200,17 @@ line-height: calc(20/12);
 
     .modal {
     width: 806px;
-    height: 558px;
+    max-height: 558px;
     }
 
     .modal_content {
       padding: 40px 12px;
+      gap: 16px;
     }
     
     .modal_img {
-    min-width: 375px;
-    height: 478px;
-    margin-right: 16px;
+      min-width: 375px;
+      height: 478px;
     }
   
     .main_text_modal {
