@@ -40,12 +40,16 @@ async function gettingMoviesByKeyword(e) {
 
   apiService.query = refs.homeHeaderForm.query.value;
   apiService.requestType = 'search';
-  console.log(apiService.requestType);
 
   loader.show();
   const responce = await apiService.fetchMovieByQuery();
-  loader.hide();
 
+  loader.hide();
+  if (responce.results == 0) {
+    refs.paragrafAboutResult.classList.remove('search-incorrect');
+    return;
+  }
+  refs.paragrafAboutResult.classList.add('search-incorrect');
   buildingPagination(responce);
   return (refs.cardContainer.innerHTML = renderMarkupFilmsCard(
     responce.results
