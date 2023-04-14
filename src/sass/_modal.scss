@@ -10,6 +10,7 @@
 
 .modal {
   width: 280px;
+  max-height: 930;
   background-color: #fff;
   transition: all .5s;
   position: fixed;
@@ -21,6 +22,7 @@
 }
 
 .modal_content {
+  
   position: relative;
   padding: 48px 20px 40px 20px;
 }
@@ -165,7 +167,7 @@ line-height: calc(20/12);
 @media only screen and (min-width: 768px) {
   .modal {
   width: 704px;
-  height: 550px;
+  max-height: 552px;
   }
 
   .modal_content {
@@ -199,7 +201,7 @@ line-height: calc(20/12);
 
     .modal {
     width: 806px;
-    height: 558px;
+    max-height: 558px;
     }
 
     .modal_content {

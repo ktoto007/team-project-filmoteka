@@ -21,6 +21,7 @@ function handleModalBtnClick(event) {
       createModal(movieData);
       createBackdrop();
 
+
       btnWatched = document.querySelector('.button-watched');
       btnQueue = document.querySelector('.button-queue');
 
