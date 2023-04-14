@@ -138,26 +138,30 @@
   <body>
     <header class="header">
       <div class="library__container container">
-        <div class="library__buttons">
+        <div class="library__buttons-top">
           <ul class="library__btn-position">
             <li><a class="library__btn btn-home" href="./index.html">Home</a></li>
             <li>
               <a class="btn-mylibrary library__btn" href="./library.html">My Library</a>
             </li>
           </ul>
-          <ul class="library__btn-position">
+          </div>
+          <div class="library__bottom">
+          <div class="library__buttons-bottom">
+          <ul class="library__btn-position library__bottom-position">
             <li>
               <button class="library__btn header__btn-watched" type="button">Watched</button>
             </li>
             <li><button class="library__btn header__btn-queue" type="button">Queue</button></li>
           </ul>
-        </div>
+          </div>
         <a href="index.html" class="library__logo">
           <svg class="header__logo-svg" width="24" height="24">
             <use href="./img/icons.svg#icon-film-1"></use>
           </svg>
           <p class="library__title">Filmoteka</p>
         </a>
+      </div>
       </div>
     </header>
 

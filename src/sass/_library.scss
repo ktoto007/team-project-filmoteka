@@ -91,19 +91,17 @@
 
 // ===============================================================
 
-
-/* common styles for links */
 .library__btn {
   display: inline-block;
   text-transform: uppercase;
-
+border: none;
   border-radius: 100px;
   color: #ffffff;
   background-color: #000000;
-
-  font-family: "Roboto", sans-serif;
   font-size: 12px;
+  font-weight: 500;
   line-height: calc(14 / 12);
+  cursor: pointer;
 }
 
 .btn-home {
@@ -262,7 +260,17 @@
       }
 }
 
-.library__buttons {
+// .library__buttons {
+//   display: contents;
+
+//   @media screen and (min-width: 768px) {
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: space-between;
+//   }
+// }
+
+.library__buttons-top {
   display: contents;
 
   @media screen and (min-width: 768px) {
@@ -270,6 +278,11 @@
     flex-direction: row;
     justify-content: space-between;
   }
+}
+
+.library__buttons-bottom {
+display: flex;
+  justify-content: center;
 }
 
 .library__btn-position {
@@ -282,32 +295,59 @@
   }
 }
 
-.library__btn-position:last-child {
-  padding: 0 44px;
-}
-
-.library__btn-position:last-child {
-  padding: 0 30px;
+.library__bottom-position {
+position: relative;
 
   @media screen and (min-width: 768px) {
-    padding: 0;
-  }
+        top: -143px;
+        right: 0;
+    }
+
+        @media screen and (min-width: 1280px) {
+          top: -192px;
+          right: 0;
+        }
+}
+
+// .library__btn-position:last-child {
+//   padding: 0 44px;
+// }
+
+// .library__btn-position:last-child {
+//   padding: 0 30px;
+
+//   @media screen and (min-width: 768px) {
+//     padding: 0;
+//   }
+// }
+
+.library__bottom {
+    display: flex;
+      flex-direction: column-reverse;
+      gap: 20px;
+  
+    @media screen and (min-width: 768px) {
+      flex-direction: row-reverse;
+      justify-content: space-between;
+    }
 }
 
 .library__logo {
   display: flex;
   align-items: center;
-  top: 348px;
-  left: 48px;
+  justify-content: center;
+  // top: 348px;
+  // left: 48px;
 
   @media screen and (min-width: 768px) {
-    top: 168px;
-    left: 16px;
+
+    // top: 168px;
+    // left: 16px;
   }
 
   @media screen and (min-width: 1280px) {
-    top: 209px;
-    left: 32px;
+    // top: 209px;
+    // left: 32px;
   }
 }
 
@@ -315,7 +355,7 @@
   color: #fff;
   font-size: 32px;
   line-height: calc(38 / 32);
-  margin-left: 8px;
+  // margin-left: 8px;
 
   @media screen and (min-width: 768px) {
     font-size: 40px;
@@ -347,10 +387,10 @@
   }
 }
 
-.this {
-  color: #ffffff;
-  background-color: #000000;
-}
+// .this {
+//   color: #ffffff;
+//   background-color: #000000;
+// }
 
 .this-library {
   color: #ffffff;
