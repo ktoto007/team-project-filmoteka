@@ -230,3 +230,8 @@ line-height: calc(20/12);
       }
     }
   
+    .disabled-scroll {
+        position: relative;
+        overflow: hidden;
+        height: 100vw;
+    }
