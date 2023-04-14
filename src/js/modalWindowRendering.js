@@ -33,6 +33,7 @@ function handleModalBtnClick(event) {
         );
         if (listWatched) {
           btnWatched.textContent = 'Remove from Watched';
+          btnQueue.setAttribute('disabled', '');
         }
       }
 
@@ -42,6 +43,7 @@ function handleModalBtnClick(event) {
         );
         if (listQueue) {
           btnQueue.textContent = 'Remove from Queue';
+          btnWatched.setAttribute('disabled', '');
         }
       }
 
