@@ -90,8 +90,13 @@ export function renderingPaginationForFirstPageWatched() {
         
     if (filmsAmount === 0) {
         refs.buttonsPagesList.innerHTML = '';
+        refs.buttonBack.classList.add('button-hidden');
+        refs.buttonForward.classList.add('button-hidden')
+
         return
     } 
+        refs.buttonBack.classList.remove('button-hidden');
+    refs.buttonForward.classList.remove('button-hidden');
         buildingPagination(libraryLogic.pages)
     }
 
@@ -103,8 +108,13 @@ export function renderingPaginationForFirstPageQueue() {
         
     if (filmsAmount === 0) {
         refs.buttonsPagesList.innerHTML = '';
+        refs.buttonBack.classList.add('button-hidden');
+        refs.buttonForward.classList.add('button-hidden')
             return 
     }
-        buildingPagination(libraryLogic.pages)
+    
+    refs.buttonBack.classList.remove('button-hidden');
+    refs.buttonForward.classList.remove('button-hidden');
+    buildingPagination(libraryLogic.pages);
     }
     
