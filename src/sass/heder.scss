@@ -279,8 +279,7 @@
   }
 }
 
-
-.search-incorrect {
+.search-correct {
 position: relative;
 top: -140px;
 left: 20px;
@@ -289,7 +288,7 @@ font-size: 10px;
 line-height: 12px;
 width: 25vh;
 color: #FFFFFF;
-display: none;
+display: block;
 
 @media screen and (min-width: 768px) {
   top: -35px;
@@ -303,8 +302,8 @@ display: none;
     }
 }
 
-.search-correct {
-display: block;
+.search-incorrect {
+display: none;
 }
 
 .header__logo-link {
