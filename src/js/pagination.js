@@ -4,10 +4,6 @@ import renderMarkupFilmsCard from './renderMarkupFilmsCard';
 import { loader } from './loader';
 import {lastPage, buildingPagination } from './renderingPagination';
 
-// const buttonBack = document.querySelector('.button-back');
-// const buttonForward = document.querySelector('.button-forward');
-// const buttonsPagesList = document.querySelector('.buttons-pages');
-
 // Слухач на клік по кнопці з номером сторінки
 refs.buttonsPagesList.addEventListener('click', renderingFilmsByPageNumber);
 // Слухач на клік по кнопці назад
@@ -103,3 +99,4 @@ function goForwardOnePage() {
         }
     }
 }
+

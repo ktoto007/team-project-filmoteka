@@ -1,35 +1,97 @@
-/* Стилі для спіннера */
+// /* Стилі для спіннера */
+// .loader {
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     right: 0;
+//     bottom: 0;
+//     background-color: rgba(255, 255, 255, 0.8);
+//     z-index: 10;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+// }
+
+// /* Анімація спіннера */
+// .loader::after {
+//     content: "";
+//     width: 40px;
+//     height: 40px;
+//     border-radius: 50%;
+//     border: 7px solid black;
+//     border-color: #f11243 transparent #f11243 transparent;
+//     animation: spin 0.8s linear infinite;
+// }
+
+// /* Обертання спіннера */
+// @keyframes spin {
+//     0% {
+//         transform: rotate(0deg);
+//     }
+
+//     100% {
+//         transform: rotate(360deg);
+//     }
+// }
+
+
+
 .loader {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: #fff;
     z-index: 10;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-/* Анімація спіннера */
-.loader::after {
-    content: "";
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 7px solid black;
-    border-color: #f11243 transparent #f11243 transparent;
-    animation: spin 0.8s linear infinite;
+.loader__text {
+    margin-top: 7px;
+    color: #3D314A;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-family: fantasy;
+    font-size: 22px;
 }
 
-/* Обертання спіннера */
-@keyframes spin {
+.loader__filmstrip {
+    position: relative;
+    width: 9%;
+    height: 20%;
+    /* background: linear-gradient(45deg, #ddff00, #f84052); */
+    background-color: #3D314A;
+    z-index: 50;
+}
+
+.loader__filmstrip::before,
+.loader__filmstrip::after {
+    content: '';
+    position: absolute;
+    height: 110%;
+    border-left: 5px dashed #fff;
+    animation: roll 250ms infinite;
+}
+
+.loader__filmstrip::before {
+    left: 7px;
+}
+
+.loader__filmstrip::after {
+    right: 7px;
+}
+
+
+@keyframes roll {
     0% {
-        transform: rotate(0deg);
+        top: 0%;
     }
 
     100% {
-        transform: rotate(360deg);
+        top: -15%;
     }
 }
