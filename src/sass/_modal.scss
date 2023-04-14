@@ -1,5 +1,6 @@
 .modal {
   width: 280px;
+  max-height: 100%;
   background-color: #fff;
   transition: all .5s;
   position: fixed;
@@ -168,7 +169,6 @@ line-height: calc(20/12);
 @media only screen and (min-width: 768px) {
   .modal {
   width: 704px;
-  height: 550px;
   }
 
   .modal_content {
@@ -202,7 +202,6 @@ line-height: calc(20/12);
 
     .modal {
     width: 806px;
-    height: 558px;
     }
 
     .modal_content {
