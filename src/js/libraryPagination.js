@@ -4,10 +4,6 @@ import { lastPage, buildingPagination } from './renderingPagination';
 import { libraryLogic } from './workWithLocalStorage';
 import { refs } from './refs';
 
-const buttonBack = document.querySelector('.button-back');
-const buttonForward = document.querySelector('.button-forward');
-const buttonsPagesList = document.querySelector('.buttons-pages');
-
 function renderingPaginationForFirstPage() {
         const filmsWatched = libraryLogic.getFromStorage('watched');
         const filmsAmount = filmsWatched.length;
@@ -15,39 +11,106 @@ function renderingPaginationForFirstPage() {
             page: 1,
             total_pages: Math.ceil(filmsAmount / 20)
         };
-        
-    if (filmsAmount === 0) {
+        if (filmsAmount === 0) {
             return 
-        }
+    }
         if (pages.total_pages === 1) {
             buildingPagination(pages);
         } else {
-                const filmsForOnePage = filmsWatched.slice(0, 20);
+                
                 buildingPagination(pages)
         }
 }
 
 renderingPaginationForFirstPage()
 
-// buttonsPagesList.addEventListener('click', (evt) => {
-//     if (evt.target.type !== 'button') {
-//     return
-//     }
-//   const queryPage = evt.target.textContent;
-//   const films = libraryLogic.getFromStorage('watched');
-//   console.log(films)
-//         const filmsAmount = films.length;
-//         const pages = {
-//             page: Number(queryPage),
-//             total_pages: Math.ceil(filmsAmount / 20)
-//         };
-//         if (pages.page === 1) {
-//             renderingPaginationForFirstPage();
-//             refs.cardContainer.innerHTML = renderMarkupFilmsCard(films);
-//             return
-//         }
-//         const filmsForPage = films.slice(pages.page*10, pages.page*20);
-//                 buildingPagination(pages);
-//                 refs.cardContainer.innerHTML = renderMarkupFilmsCard(filmsForPage);
-// })
+refs.buttonsPagesList.addEventListener('click', renderingLibraryByPageNumber)
 
+function renderingLibraryByPageNumber(evt) {
+    if (evt.target.type !== 'button') {
+        return
+    }
+    const selectLibrary = document.querySelector('.this-library');
+    const queryPage = Number(evt.target.textContent);
+    console.log(selectLibrary.textContent.trim().toLocaleLowerCase())
+    const films = libraryLogic.getFromStorage(`${selectLibrary.textContent.trim().toLocaleLowerCase()}`);
+    const filmsAmount = films.length;
+    const pages = {
+        page: queryPage,
+        total_pages: Math.ceil(filmsAmount / 20)
+    };
+    if (pages.page === 1) {
+        const filmsForOnePage = [...films].splice(0, 20);
+        buildingPagination(pages);
+        filmsForOnePage.map(item => {
+            const keys = item.genres.map(item => Object.values(item)[0]);
+            item.genre_ids = keys;
+        });
+        refs.cardContainer.innerHTML = renderMarkupFilmsCard(filmsForOnePage);
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    } else {
+        const filmsForPage = [...films].splice((pages.page * 10 + (pages.page - 2) * 10), 20);
+        buildingPagination(pages);
+        filmsForPage.map(item => {
+            const keys = item.genres.map(item => Object.values(item)[0]);
+            item.genre_ids = keys;
+        });
+        refs.cardContainer.innerHTML = renderMarkupFilmsCard(filmsForPage);
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    }
+}
+
+// Слухач на кнопку назад
+refs.buttonBack.addEventListener('click', goBackOnePageLibrary);
+// Слухач на клік по кнопці вперед
+refs.buttonForward.addEventListener('click', goForwardOnePageLibrary);
+
+function goBackOnePageLibrary() {
+    const selectLibrary = document.querySelector('.this-library');
+    const queryPage = Number(document.querySelector('.current-page').textContent) - 1;
+    const films = libraryLogic.getFromStorage(`${selectLibrary.textContent.trim().toLocaleLowerCase()}`);
+    const filmsAmount = films.length;
+    const pages = {
+        page: queryPage,
+        total_pages: Math.ceil(filmsAmount / 20)
+    };
+    if (queryPage < 1) {
+            return
+        } else {
+            const filmsForPage = [...films].splice((pages.page * 10 + (pages.page - 2) * 10), 20);
+        buildingPagination(pages);
+        filmsForPage.map(item => {
+            const keys = item.genres.map(item => Object.values(item)[0]);
+            item.genre_ids = keys;
+        });
+        refs.cardContainer.innerHTML = renderMarkupFilmsCard(filmsForPage);
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+        
+        return
+    }
+}
+
+function goForwardOnePageLibrary() {
+    const selectLibrary = document.querySelector('.this-library');
+    const queryPage = Number(document.querySelector('.current-page').textContent) + 1;
+    const films = libraryLogic.getFromStorage(`${selectLibrary.textContent.trim().toLocaleLowerCase()}`);
+    const filmsAmount = films.length;
+    const pages = {
+        page: queryPage,
+        total_pages: Math.ceil(filmsAmount / 20)
+    };
+    if (queryPage > pages.total_pages) {
+        return
+    } else {
+        const filmsForPage = [...films].splice((pages.page * 10 + (pages.page - 2) * 10), 20);
+        buildingPagination(pages);
+        filmsForPage.map(item => {
+            const keys = item.genres.map(item => Object.values(item)[0]);
+            item.genre_ids = keys;
+        });
+        refs.cardContainer.innerHTML = renderMarkupFilmsCard(filmsForPage);
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+        
+        return
+    }
+}

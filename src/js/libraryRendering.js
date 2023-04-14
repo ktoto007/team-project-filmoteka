@@ -5,8 +5,6 @@ document.addEventListener('DOMContentLoaded', gettingMoviesFromWatched);
 
 refs.buttonWatched.addEventListener('click', gettingMoviesFromWatched);
 
-refs.buttonQueue.addEventListener('click', gettingMoviesFromQueue);
-
 function gettingMoviesFromWatched() {
   const arr = libraryLogic.getFromStorage('watched');
   refs.buttonWatched.classList.add('this-library');
@@ -17,6 +15,8 @@ function gettingMoviesFromWatched() {
   });
   refs.cardContainer.innerHTML = renderMarkupFilmsCard(arr.slice(0, 20));
 }
+
+refs.buttonQueue.addEventListener('click', gettingMoviesFromQueue);
 
 function gettingMoviesFromQueue() {
   const arr = libraryLogic.getFromStorage('queue');
