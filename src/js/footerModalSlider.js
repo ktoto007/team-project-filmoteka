@@ -8,7 +8,7 @@ const render = (localState, root) => {
     imgContainer1.classList.add('team-container');
     const imageEl1 = document.createElement("img");
     imageEl1.setAttribute("src", localState.array[localState.idEl1].preview);
-    imageEl1.setAttribute('class', 'modal_img team-modal_img');;
+    imageEl1.setAttribute('class', 'team-modal_img');;
     const titleEl1 = document.createElement("a");
     titleEl1.setAttribute('href', localState.array[localState.idEl1].link);
     titleEl1.innerText = localState.array[localState.idEl1].name;
@@ -23,7 +23,7 @@ const render = (localState, root) => {
     imgContainer2.classList.add('team-container');
     const imageEl2 = document.createElement("img");
     imageEl2.setAttribute("src", localState.array[localState.idEl2].preview);
-    imageEl2.setAttribute('class', 'modal_img team-modal_img');
+    imageEl2.setAttribute('class', 'team-modal_img');
     const titleEl2 = document.createElement("a");
     titleEl2.setAttribute('href', localState.array[localState.idEl2].link);
     titleEl2.innerText = localState.array[localState.idEl2].name;
