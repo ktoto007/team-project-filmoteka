@@ -13,7 +13,10 @@ async function getGenresInfo() {
 getGenresInfo();
 
 class LibraryLogic {
-  constructor() {}
+  constructor() {
+    this.page = 1,
+    this.total_pages = 1
+  }
 
   addToLocalStorage(film, listType) {
     let moviesList;
@@ -36,9 +39,7 @@ class LibraryLogic {
   }
 
   removeFromLocalstorage(film, type) {
-
     if (type == 'queue') {
-
       const queueMovies = JSON.parse(localStorage.getItem('queue'));
       if (queueMovies.find(queueMovie => queueMovie.id === film.id)) {
         localStorage.setItem(
@@ -77,6 +78,30 @@ class LibraryLogic {
       return [];
     }
   }
+
+  get currentPage() {
+    return this.page;
+  }
+
+  set currentPage(newPage) {
+    this.page = newPage;
+  }
+
+  get totalPages() {
+    return this.total_pages;
+  }
+
+  set totalPages(newAmount) {
+    this.total_pages = newAmount;
+  }
+
+  get pages () {
+    return {
+      page: this.page,
+      total_pages: this.total_pages
+    }
+  }
+
 }
 
 export const libraryLogic = new LibraryLogic();

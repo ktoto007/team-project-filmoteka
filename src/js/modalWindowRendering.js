@@ -9,6 +9,7 @@ let btnQueue;
 let film;
 let moviesListWatched;
 let moviesListQueue;
+const body = document.body;
 const cardsContainer = document.querySelector('.cards-container');
 cardsContainer.addEventListener('click', handleModalBtnClick);
 
@@ -34,6 +35,7 @@ function handleModalBtnClick(event) {
         );
         if (listWatched) {
           btnWatched.textContent = 'Remove from Watched';
+          btnQueue.setAttribute('disabled', '');
         }
       }
 
@@ -43,6 +45,7 @@ function handleModalBtnClick(event) {
         );
         if (listQueue) {
           btnQueue.textContent = 'Remove from Queue';
+          btnWatched.setAttribute('disabled', '');
         }
       }
 
@@ -55,6 +58,7 @@ function handleModalBtnClick(event) {
 function createModal(movieData) {
   modal = document.createElement('div');
   modal.classList.add('modal');
+  body.classList.add('disabled-scroll');
 
   const modalHTML = `
       <div class="modal_content">
@@ -149,6 +153,7 @@ function createBackdrop() {
 function closeModal() {
   modal.remove();
   backdrop.remove();
+  body.classList.remove('disabled-scroll');
 }
 
 function addFilmToListWatched(event) {

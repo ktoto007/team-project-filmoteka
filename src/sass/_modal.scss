@@ -45,7 +45,6 @@
 
 .modal_img {
   min-width: 240px;
-  height: 357px;
   margin-bottom: 20px;
   border-radius: 5px;
 }
@@ -229,3 +228,8 @@ line-height: calc(20/12);
       }
     }
   
+    .disabled-scroll {
+        position: relative;
+        overflow: hidden;
+        height: 100vw;
+    }
