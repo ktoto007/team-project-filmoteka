@@ -10,19 +10,18 @@
 
 .modal {
   width: 280px;
-  max-height: 930;
+  max-height: 100%;
   background-color: #fff;
-  transition: all .5s;
+  transition: all 0.5s;
   position: fixed;
   top: 50%;
   left: 50%;
   overflow-y: scroll;
-  transform: translate(-50%, -50%); 
+  transform: translate(-50%, -50%);
   z-index: 100;
 }
 
 .modal_content {
-  
   position: relative;
   padding: 48px 20px 40px 20px;
 }
@@ -32,15 +31,13 @@
   top: 16px;
   right: 16px;
   fill: black;
-  
+
   cursor: pointer;
 }
 
-
-
 .close:hover,
 .close:focus {
-  fill: #B92F2C;
+  fill: #b92f2c;
 }
 
 .modal_img {
@@ -53,10 +50,9 @@
   color: #000000;
   font-weight: 500;
   font-size: 20px;
-  line-height: calc(23/20);
+  line-height: calc(23 / 20);
   margin-bottom: 20px;
 }
-
 
 .modal_items_container {
   display: flex;
@@ -64,10 +60,10 @@
   margin-bottom: 20px;
 }
 
-.modal-text{
+.modal-text {
   font-weight: 500;
   font-size: 12px;
-  line-height: calc(16/12);
+  line-height: calc(16 / 12);
   color: #000000;
 }
 
@@ -75,7 +71,7 @@
   list-style-type: none;
   padding: 0;
 
-  color: #8C8C8C;
+  color: #8c8c8c;
 }
 
 .modal-list__item:not(:last-child) {
@@ -86,150 +82,141 @@
   color: #000000;
 }
 
-.modal-item__info{
+.modal-item__info {
   font-weight: 500;
-font-size: 12px;
-line-height: calc(14/12);
+  font-size: 12px;
+  line-height: calc(14 / 12);
 }
 
 .vote_span {
   display: inline-block;
   padding: 1px 10px;
 
-  background-color: #B92F2C;
+  background-color: #b92f2c;
   color: #fff;
 
   border-radius: 5px;
 }
 
-.vote_count_span{
+.vote_count_span {
   padding: 1px 4px;
 
-  background-color: #F7F7F7;;
+  background-color: #f7f7f7;
   color: #000000;
 
   border-radius: 5px;
 }
 
-
-.delimiter{
-  color: #8C8C8C;
+.delimiter {
+  color: #8c8c8c;
 }
-
-
 
 .about_modal_text {
   margin-bottom: 8px;
   text-transform: uppercase;
 }
 
-.overview_modal{
-margin-bottom: 20px;
-line-height: calc(20/12);
+.overview_modal {
+  margin-bottom: 20px;
+  line-height: calc(20 / 12);
 }
 
-.buttons-modal{
+.buttons-modal {
   display: flex;
-  gap:4px;
+  gap: 4px;
 }
 
-.button-modal{
+.button-modal {
   font-weight: 500;
   font-size: 12px;
-  line-height: calc(14/12);
+  line-height: calc(14 / 12);
 
   text-transform: uppercase;
 
-  color:  #B92F2C;
-  background: #FFFFFF;
+  color: #b92f2c;
+  background: #ffffff;
   border: 1px solid #000000;
   border-radius: 100px;
 
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.button-watched{
+.button-watched {
   padding: 10px 12px;
 }
 
-.button-queue{
+.button-queue {
   padding: 10px 14px;
 }
 
-.button-modal:hover,.button-modal:focus{
-  color:  #FFFFFF;
-  background: #B92F2C;
+.button-modal:hover,
+.button-modal:focus {
+  color: #ffffff;
+  background: #b92f2c;
   border: none;
 }
 
 @media only screen and (min-width: 768px) {
   .modal {
-  width: 704px;
-  max-height: 552px;
-  }
+    width: 704px;
+    .modal_content {
+      display: flex;
+      padding: 40px 72px 64px 36px;
+      gap: 68px;
+    }
 
-  .modal_content {
-  display: flex;
-  padding: 40px 72px 64px 36px;
-  gap: 68px;
-  }
+    .modal_img {
+      min-width: 264px;
+      height: 374px;
+      margin-bottom: 0;
+    }
 
-  .modal_img {
-    min-width: 264px;
-    height: 374px;
-    margin-bottom: 0;
-  }
-
-
-  .buttons-modal {
+    .buttons-modal {
       gap: 8px;
     }
 
-  .button-watched{
+    .button-watched {
       padding: 12px 18px;
     }
-    
-  .button-queue{
+
+    .button-queue {
       padding: 12px 18px;
     }
   }
+}
 
-
-  @media only screen and (min-width: 1280px){
-
-    .modal {
+@media only screen and (min-width: 1280px) {
+  .modal {
     width: 806px;
-    max-height: 558px;
-    }
-
     .modal_content {
       padding: 40px 12px;
       gap: 16px;
     }
-    
+
     .modal_img {
       min-width: 375px;
       height: 478px;
     }
-  
+
     .main_text_modal {
       font-size: 30px;
-      line-height: calc(35/30);
+      line-height: calc(35 / 30);
     }
- 
-    .button-watched{
-        padding: 14px 32px;
-      
-      }
-      
-    .button-queue{
-        padding: 14px 24px;
-      }
+
+    .button-watched {
+      padding: 14px 32px;
     }
-  
-    .disabled-scroll {
-        position: relative;
-        overflow: hidden;
-        height: 100vw;
+
+    .button-queue {
+      padding: 14px 24px;
     }
+  }
+
+  .disabled-scroll {
+    position: relative;
+    overflow: hidden;
+    height: 100vw;
+  }
+}
