@@ -1,5 +1,8 @@
 import { apiService } from './filmsAPIServise';
 import { libraryLogic } from './workWithLocalStorage';
+import renderMarkupFilmsCard from './renderMarkupFilmsCard';
+// import { gettingMoviesFromWatched, gettingMoviesFromQueue } from './libraryRendering';
+import { refs } from './refs';
 
 //=================== Добавление обработчика события на кнопку "Открыть модальное окно"================
 let modal;
@@ -153,6 +156,57 @@ function closeModal() {
   modal.remove();
   backdrop.remove();
   body.classList.remove('disabled-scroll');
+
+  if(refs.header.classList.contains('header-library')){
+    
+
+    if(refs.buttonWatched.classList.contains('this-library')) {
+      gettingMoviesFromWatched();
+      return
+    }
+    
+    gettingMoviesFromQueue();
+  }
+  
+}
+
+function gettingMoviesFromWatched() {
+  const arr = libraryLogic.getFromStorage('watched');
+  refs.buttonWatched.classList.add('this-library');
+  refs.buttonQueue.classList.remove('this-library');
+  console.log(arr);
+  if (arr.length == 0) {
+    refs.cardContainer.innerHTML =
+      "<li class='clear-storage-text'><p>Sorry, but you haven't added any movies to this category yet</p></li>";
+    return;
+  } 
+    arr.map(item => {
+      const keys = item.genres.map(item => Object.values(item)[0]);
+      item.genre_ids = keys;
+    });
+    refs.cardContainer.innerHTML = renderMarkupFilmsCard(arr.slice(0, 20));
+  
+}
+
+function gettingMoviesFromQueue() {
+  const arr = libraryLogic.getFromStorage('queue');
+  refs.buttonQueue.classList.add('this-library');
+  refs.buttonWatched.classList.remove('this-library');
+  if (arr.length == 0) {
+    refs.cardContainer.innerHTML =
+      "<li class='clear-storage-text'><p>Sorry, but you haven't added any movies to this category yet</p></li>";
+    return;
+  } 
+
+  refs.buttonQueue.classList.add('this-library');
+  refs.buttonWatched.classList.remove('this-library');
+  arr.map(item => {
+    const keys = item.genres.map(item => Object.values(item)[0]);
+    item.genre_ids = keys;
+  });
+  refs.cardContainer.innerHTML = renderMarkupFilmsCard(arr.slice(0, 20));
+  
+  
 }
 
 function addFilmToListWatched(event) {
