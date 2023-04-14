@@ -1,6 +1,13 @@
 import { apiService } from './filmsAPIServise';
 
 async function getGenresInfo() {
+  if (
+    localStorage.getItem('28') != null ||
+    localStorage.getItem('10770') != null
+  ) {
+    return;
+  }
+
   const response = await apiService.fetchMovieGenres();
 
   const genres = response.genres;
@@ -14,8 +21,7 @@ getGenresInfo();
 
 class LibraryLogic {
   constructor() {
-    this.page = 1,
-    this.total_pages = 1
+    (this.page = 1), (this.total_pages = 1);
   }
 
   addToLocalStorage(film, listType) {
@@ -95,13 +101,12 @@ class LibraryLogic {
     this.total_pages = newAmount;
   }
 
-  get pages () {
+  get pages() {
     return {
       page: this.page,
-      total_pages: this.total_pages
-    }
+      total_pages: this.total_pages,
+    };
   }
-
 }
 
 export const libraryLogic = new LibraryLogic();
