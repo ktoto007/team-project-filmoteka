@@ -83,27 +83,28 @@ function goForwardOnePageLibrary() {
 }
 
 export function renderingPaginationForFirstPageWatched() {
-        const filmsWatched = libraryLogic.getFromStorage('watched');
+    const filmsWatched = libraryLogic.getFromStorage('watched');
         const filmsAmount = filmsWatched.length;
         libraryLogic.currentPage = 1;
         libraryLogic.totalPages = Math.ceil(filmsAmount / 20);
         
-        if (filmsAmount === 0) {
-            return 
-    }
+    if (filmsAmount === 0) {
+        refs.buttonsPagesList.innerHTML = '';
+        return
+    } 
         buildingPagination(libraryLogic.pages)
-    
-        }
+    }
 
 export function renderingPaginationForFirstPageQueue() {
-        const filmsWatched = libraryLogic.getFromStorage('queue');
-    const filmsAmount = filmsWatched.length;
+    const filmsQueue = libraryLogic.getFromStorage('queue');
+    const filmsAmount = filmsQueue.length;
     libraryLogic.currentPage = 1;
         libraryLogic.totalPages = Math.ceil(filmsAmount / 20);
         
-        if (filmsAmount === 0) {
+    if (filmsAmount === 0) {
+        refs.buttonsPagesList.innerHTML = '';
             return 
     }
         buildingPagination(libraryLogic.pages)
+    }
     
-        }
