@@ -70,13 +70,13 @@ function createModal(movieData) {
         <h2 class="main_text_modal">${movieData.title}</h2>
         <div class="modal_items_container">
           <ul class="modal_list modal-text">
-            <li>Vote / Votes</li>
-            <li>Popularity</li>
-            <li>Original Title</li>
-            <li>Genre</li>
+            <li class="modal-list__item">Vote / Votes</li>
+            <li class="modal-list__item">Popularity</li>
+            <li class="modal-list__item">Original Title</li>
+            <li class="modal-list__item">Genre</li>
           </ul>
           <ul class="modal_list modal_list--black modal-text">
-            <li>
+            <li class="modal-list__item">
               <span class="modal-item__info vote_span">${movieData.vote_average.toFixed(
                 1
               )}</span>
@@ -85,9 +85,9 @@ function createModal(movieData) {
                 movieData.vote_count
               }</span>
             </li>
-            <li>${movieData.popularity.toFixed(1)}</li>
-            <li>${movieData.title}</li>
-            <li>${movieData.genres[0].name}</li>
+            <li class="modal-list__item">${movieData.popularity.toFixed(1)}</li>
+            <li class="modal-list__item">${movieData.title}</li>
+            <li class="modal-list__item">${movieData.genres[0].name}</li>
           </ul>
         </div>
         <p class="about_modal_text modal-text">About</p>
