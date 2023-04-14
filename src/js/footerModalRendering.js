@@ -37,10 +37,15 @@ const renderModalWindow = () => {
 };
 
 const onOpenModalBtnClick = () => {
+  const body = document.body;
+  body.classList.add('disabled-scroll')
   const backdrop = renderModalWindow();
   sliderComponate(state, '');
   const btnModalClose = document.querySelector('.footer-modal_button');
-  const removeModalWindow = () => backdrop.remove();
+  const removeModalWindow = () => {
+    backdrop.remove();
+    body.classList.remove('disabled-scroll');
+  }
   const onCloseModalBtnClick = () => removeModalWindow();
   btnModalClose.addEventListener('click', onCloseModalBtnClick);
 
